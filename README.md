@@ -138,11 +138,11 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 ### Lecture 6: Data Joining & Merging
 **Topics:** Combining multiple data sources and relational data operations
 
-- **Practice Files:**
-  - `midterm_practice_L6.ipynb` - Midterm practice exercises for data joining and merging
-
 - **Lecture File:**
   - `6726077_SithuWinSan_L6.ipynb` - Main lecture assignment on data merging and joins
+
+- **Practice Files:**
+  - `midterm_practice_L6.ipynb` - Midterm practice exercises for data joining and merging
 
 - **Datasets (Multiple Sources for Merging):**
   - **Inventory Data:** `inv_jul.csv`, `inv_aug.csv`, `inv_sep.csv` (with corresponding `.txt` versions)
