@@ -1,0 +1,408 @@
+         Job_Category  
+0    Machine Learning  
+1    Data Engineering  
+2      Data Analytics  
+3    Machine Learning  
+4      Data Analytics  
+5        Data Science  
+6        Data Science  
+7      Data Analytics  
+8    Data Engineering  
+9        Data Science  
+10       Data Science  
+11     Data Analytics  
+12     Data Analytics  
+13   Data Engineering  
+14   Data Engineering  
+15     Data Analytics  
+16       Data Science  
+17   Data Engineering  
+18     Data Analytics  
+19   Machine Learning  
+20   Data Engineering  
+21       Data Science  
+22              Other  
+23     Data Analytics  
+24   Data Engineering  
+25   Machine Learning  
+26   Machine Learning  
+27   Data Engineering  
+28   Data Engineering  
+29       Data Science  
+30       Data Science  
+31   Data Engineering  
+32     Data Analytics  
+33   Data Engineering  
+34       Data Science  
+35       Data Science  
+36       Data Science  
+37       Data Science  
+38   Data Engineering  
+39       Data Science  
+40   Machine Learning  
+41       Data Science  
+42         Managerial  
+43       Data Science  
+44       Data Science  
+45       Data Science  
+46     Data Analytics  
+47         Managerial  
+48              Other  
+49     Data Analytics  
+50   Data Engineering  
+51       Data Science  
+52   Machine Learning  
+53   Data Engineering  
+54     Data Analytics  
+55     Data Analytics  
+56     Data Analytics  
+57              Other  
+58     Data Analytics  
+59   Data Engineering  
+60   Machine Learning  
+61     Data Analytics  
+62              Other  
+63              Other  
+64   Data Engineering  
+65     Data Analytics  
+66     Data Analytics  
+67              Other  
+68   Data Engineering  
+69   Data Engineering  
+70   Data Engineering  
+71   Data Engineering  
+72   Machine Learning  
+73   Machine Learning  
+74       Data Science  
+75              Other  
+76     Data Analytics  
+77   Data Engineering  
+78   Data Engineering  
+79     Data Analytics  
+80       Data Science  
+81     Data Analytics  
+82       Data Science  
+83   Machine Learning  
+84       Data Science  
+85       Data Science  
+86       Data Science  
+87   Machine Learning  
+88   Machine Learning  
+89       Data Science  
+90       Data Science  
+91   Data Engineering  
+92       Data Science  
+93   Machine Learning  
+94              Other  
+95   Data Engineering  
+96   Data Engineering  
+97       Data Science  
+98       Data Science  
+99              Other  
+100  Machine Learning  
+101    Data Analytics  
+102  Machine Learning  
+103        Managerial  
+104             Other  
+105        Managerial  
+106  Data Engineering  
+107        Managerial  
+108  Data Engineering  
+109    Data Analytics  
+110      Data Science  
+111             Other  
+112      Data Science  
+113  Machine Learning  
+114      Data Science  
+115      Data Science  
+116    Data Analytics  
+117  Machine Learning  
+118  Data Engineering  
+119    Data Analytics  
+120             Other  
+121  Machine Learning  
+122  Data Engineering  
+123        Managerial  
+124             Other  
+125    Data Analytics  
+126  Machine Learning  
+127             Other  
+128  Data Engineering  
+129      Data Science  
+130             Other  
+131      Data Science  
+132      Data Science  
+133  Machine Learning  
+134  Data Engineering  
+135             Other  
+136  Data Engineering  
+137  Data Engineering  
+138  Machine Learning  
+139  Data Engineering  
+140      Data Science  
+141  Machine Learning  
+142    Data Analytics  
+143      Data Science  
+144      Data Science  
+145      Data Science  
+146  Machine Learning  
+147      Data Science  
+148      Data Science  
+149    Data Analytics  
+150  Data Engineering  
+151    Data Analytics  
+152             Other  
+153      Data Science  
+154      Data Science  
+155  Data Engineering  
+156    Data Analytics  
+157      Data Science  
+158  Machine Learning  
+159  Data Engineering  
+160      Data Science  
+161  Data Engineering  
+162    Data Analytics  
+163      Data Science  
+164      Data Science  
+165    Data Analytics  
+166  Data Engineering  
+167      Data Science  
+168  Machine Learning  
+169        Managerial  
+170    Data Analytics  
+171      Data Science  
+172  Machine Learning  
+173  Data Engineering  
+174  Data Engineering  
+175  Data Engineering  
+176  Data Engineering  
+177             Other  
+178             Other  
+179      Data Science  
+180      Data Science  
+181  Machine Learning  
+182      Data Science  
+183    Data Analytics  
+184             Other  
+185      Data Science  
+186             Other  
+187      Data Science  
+188  Data Engineering  
+189    Data Analytics  
+190      Data Science  
+191      Data Science  
+192  Data Engineering  
+193    Data Analytics  
+194    Data Analytics  
+195      Data Science  
+196      Data Science  
+197      Data Science  
+198      Data Science  
+199      Data Science  
+200    Data Analytics  
+201    Data Analytics  
+202  Data Engineering  
+203      Data Science  
+204  Data Engineering  
+205  Data Engineering  
+206  Data Engineering  
+207      Data Science  
+208    Data Analytics  
+209  Data Engineering  
+210  Data Engineering  
+211  Data Engineering  
+212    Data Analytics  
+213    Data Analytics  
+214    Data Analytics  
+215    Data Analytics  
+216    Data Analytics  
+217    Data Analytics  
+218  Data Engineering  
+219  Data Engineering  
+220  Data Engineering  
+221    Data Analytics  
+222  Data Engineering  
+223        Managerial  
+224    Data Analytics  
+225  Data Engineering  
+226      Data Science  
+227  Data Engineering  
+228    Data Analytics  
+229        Managerial  
+230      Data Science  
+231  Data Engineering  
+232  Data Engineering  
+233      Data Science  
+234  Data Engineering  
+235  Data Engineering  
+236    Data Analytics  
+237    Data Analytics  
+238      Data Science  
+239  Data Engineering  
+240    Data Analytics  
+241    Data Analytics  
+242      Data Science  
+243  Machine Learning  
+244  Machine Learning  
+245  Data Engineering  
+246  Data Engineering  
+247  Data Engineering  
+248  Data Engineering  
+249    Data Analytics  
+250    Data Analytics  
+251  Machine Learning  
+252  Data Engineering  
+253  Machine Learning  
+254    Data Analytics  
+255  Data Engineering  
+256  Machine Learning  
+257  Machine Learning  
+258    Data Analytics  
+259    Data Analytics  
+260    Data Analytics  
+261    Data Analytics  
+262  Data Engineering  
+263      Data Science  
+264  Data Engineering  
+265    Data Analytics  
+266    Data Analytics  
+267  Data Engineering  
+268    Data Analytics  
+269  Data Engineering  
+270    Data Analytics  
+271      Data Science  
+272      Data Science  
+273  Data Engineering  
+274  Data Engineering  
+275  Data Engineering  
+276             Other  
+277  Machine Learning  
+278        Managerial  
+279        Managerial  
+280      Data Science  
+281  Data Engineering  
+282  Data Engineering  
+283      Data Science  
+284    Data Analytics  
+285    Data Analytics  
+286  Data Engineering  
+287  Data Engineering  
+288  Data Engineering  
+289  Machine Learning  
+290  Machine Learning  
+291  Data Engineering  
+292      Data Science  
+293  Data Engineering  
+294  Data Engineering  
+295  Data Engineering  
+296  Data Engineering  
+297  Machine Learning  
+298  Machine Learning  
+299        Managerial  
+300  Machine Learning  
+301             Other  
+302      Data Science  
+303  Machine Learning  
+304    Data Analytics  
+305      Data Science  
+306    Data Analytics  
+307      Data Science  
+308      Data Science  
+309             Other  
+310      Data Science  
+311      Data Science  
+312    Data Analytics  
+313      Data Science  
+314      Data Science  
+315      Data Science  
+316      Data Science  
+317  Machine Learning  
+318      Data Science  
+319      Data Science  
+320  Machine Learning  
+321  Data Engineering  
+322  Machine Learning  
+323      Data Science  
+324      Data Science  
+325  Machine Learning  
+326    Data Analytics  
+327      Data Science  
+328  Machine Learning  
+329  Data Engineering  
+330      Data Science  
+331             Other  
+332      Data Science  
+333        Managerial  
+334      Data Science  
+335  Machine Learning  
+336      Data Science  
+337             Other  
+338             Other  
+339      Data Science  
+340    Data Analytics  
+341  Data Engineering  
+342    Data Analytics  
+343      Data Science  
+344        Managerial  
+345      Data Science  
+346      Data Science  
+347             Other  
+348    Data Analytics  
+349      Data Science  
+350      Data Science  
+351    Data Analytics  
+352    Data Analytics  
+353    Data Analytics  
+354  Machine Learning  
+355  Data Engineering  
+356  Data Engineering  
+357    Data Analytics  
+358  Data Engineering  
+359      Data Science  
+360      Data Science  
+361    Data Analytics  
+362  Data Engineering  
+363  Data Engineering  
+364  Data Engineering  
+365  Data Engineering  
+366  Data Engineering  
+367    Data Analytics  
+368  Data Engineering  
+369      Data Science  
+370      Data Science  
+371  Data Engineering  
+372  Data Engineering  
+373  Data Engineering  
+374      Data Science  
+375    Data Analytics  
+376  Data Engineering  
+377  Data Engineering  
+378  Data Engineering  
+379    Data Analytics  
+380    Data Analytics  
+381      Data Science  
+382      Data Science  
+383    Data Analytics  
+384      Data Science  
+385    Data Analytics  
+386  Data Engineering  
+387  Data Engineering  
+388    Data Analytics  
+389  Data Engineering  
+390  Data Engineering  
+391    Data Analytics  
+392    Data Analytics  
+393      Data Science  
+394  Data Engineering  
+395      Data Science  
+396      Data Science  
+397    Data Analytics  
+398      Data Science  
+399    Data Analytics  
+400      Data Science  
+401    Data Analytics  
+402  Data Engineering  
+403  Data Engineering  
+404    Data Analytics  
+405    Data Analytics  
+406  Machine Learning

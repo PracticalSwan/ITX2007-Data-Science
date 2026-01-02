@@ -1,0 +1,408 @@
+     Working_Year                               Designation Experience Employment_Status  Salary_In_Rupees Employee_Location Company_Location Company_Size  Remote_Working_Ratio  Salary_USD  \
+0            2020                Machine Learning Scientist         SE                FT         2.069e+07                JP               JP            S                   0.0  248256.840   
+1            2020                         Big Data Engineer         SE                FT         8.675e+06                GB               GB            M                  50.0  104099.820   
+2            2020                      Product Data Analyst         MI                FT         1.591e+06                HN               HN            S                   0.0   19096.680   
+3            2020                 Machine Learning Engineer         SE                FT         1.194e+07                US               US            L                  50.0  143225.100   
+4            2020                              Data Analyst         EN                FT         5.729e+06                US               US            L                 100.0   68748.048   
+5            2020                       Lead Data Scientist         SE                FT         1.512e+07                US               US            S                 100.0  181418.460   
+6            2020                            Data Scientist         MI                FT         2.843e+06                HU               HU            L                  50.0   34120.992   
+7            2020                     Business Data Analyst         MI                FT         1.074e+07                US               US            L                 100.0  128902.596   
+8            2020                        Lead Data Engineer         SE                FT         9.946e+06                NZ               NZ            S                  50.0  119354.256   
+9            2020                            Data Scientist         MI                FT         3.221e+06                IN               IN            L                   0.0   38652.636   
+10           2020                            Data Scientist         EN                FT         3.176e+06                FR               FR            M                   0.0   38113.152   
+11           2020                         Lead Data Analyst         MI                FT         6.923e+06                US               US            L                 100.0   83070.564   
+12           2020                              Data Analyst         MI                FT         6.763e+06                US               US            L                 100.0   81160.896   
+13           2020                             Data Engineer         EN                FT         3.317e+06                JP               JP            S                 100.0   39806.076   
+14           2020                         Big Data Engineer         SE                FT         9.075e+06                PL               GB            S                 100.0  108895.956   
+15           2020                           BI Data Analyst         MI                FT         7.798e+06                US               US            M                   0.0   93573.732   
+16           2020                       Lead Data Scientist         MI                FT         9.150e+06                AE               AE            L                   0.0  109805.916   
+17           2020                             Data Engineer         SE                FT         2.666e+06                MX               MX            S                   0.0   31997.448   
+18           2020                     Business Data Analyst         EN                CT         7.957e+06                US               US            L                 100.0   95483.400   
+19           2020                  Machine Learning Manager         SE                FT         9.318e+06                CA               CA            L                  50.0  111814.884   
+20           2020                         Big Data Engineer         EN                FT         5.570e+06                US               US            L                 100.0   66838.380   
+21           2020                            Data Scientist         SE                FT         5.445e+06                GR               US            L                 100.0   65337.384   
+22           2020                        Research Scientist         MI                FT         3.581e+07                US               US            M                   0.0  429675.300   
+23           2020                              Data Analyst         MI                FT         3.721e+06                FR               FR            L                  50.0   44647.080   
+24           2020                             Data Engineer         MI                FT         5.898e+06                AT               AT            L                  50.0   70781.844   
+25           2020                 Machine Learning Engineer         EN                FT         1.989e+07                US               US            L                  50.0  238708.500   
+26           2020                 Machine Learning Engineer         EN                FT         1.098e+07                US               US            S                 100.0  131767.092   
+27           2020                  Data Engineering Manager         EX                FT         6.352e+06                ES               ES            L                  50.0   76227.264   
+28           2020                             Data Engineer         MI                FT         8.434e+06                US               US            L                 100.0  101212.404   
+29           2020                            Data Scientist         MI                FT         6.124e+06                GB               GB            S                 100.0   73482.120   
+30           2020                            Data Scientist         MI                FT         8.355e+06                US               US            L                 100.0  100257.576   
+31           2020                             Data Engineer         MI                FT         5.581e+06                FR               FR            L                  50.0   66971.100   
+32           2020                              Data Analyst         EN                FT         7.241e+06                US               US            L                 100.0   86889.900   
+33           2020                             Data Engineer         EN                FT         4.356e+06                PK               DE            L                 100.0   52269.528   
+34           2020                  Principal Data Scientist         SE                FT         1.180e+07                DE               DE            M                 100.0  141564.648   
+35           2020                            Data Scientist         MI                FT         3.085e+06                ES               ES            M                 100.0   37024.644   
+36           2020                            Data Scientist         SE                FT         9.548e+06                US               US            L                  50.0  114580.080   
+37           2020                            Data Scientist         MI                FT         1.101e+07                US               US            M                 100.0  132101.280   
+38           2020                             Data Engineer         MI                FT         1.041e+07                ES               US            M                 100.0  124892.292   
+39           2020                            Data Scientist         EN                PT         1.724e+06                IT               IT            S                  50.0   20690.292   
+40           2020                 Machine Learning Engineer         SE                FT         3.630e+06                HR               HR            S                 100.0   43557.612   
+41           2020                            Data Scientist         EN                FT         4.991e+06                DE               DE            S                  50.0   59892.912   
+42           2020                      Data Science Manager         SE                FT         1.513e+07                US               US            M                 100.0  181609.428   
+43           2020                            Data Scientist         EN                FT         8.355e+06                US               US            S                 100.0  100257.576   
+44           2020                            Data Scientist         SE                FT         7.260e+06                AT               AT            S                   0.0   87116.184   
+45           2020                            Data Scientist         MI                FT         3.358e+06                FR               FR            S                  50.0   40291.128   
+46           2021                           BI Data Analyst         EX                FT         1.194e+07                IN               US            L                 100.0  143225.100   
+47           2021                              Head of Data         EX                FT         1.870e+07                US               US            L                 100.0  224385.996   
+48           2021             3D Computer Vision Researcher         MI                PT         4.304e+05                IN               IN            M                  50.0    5164.692   
+49           2021                              Data Analyst         EN                FT         6.366e+06                US               US            M                 100.0   76386.720   
+50           2021                             Data Engineer         MI                FT         1.114e+07                US               US            L                 100.0  133676.760   
+51           2021                    Applied Data Scientist         MI                FT         4.316e+06                GB               CA            L                  50.0   51788.292   
+52           2021                 Machine Learning Engineer         MI                FT         3.762e+06                ES               ES            S                 100.0   45146.460   
+53           2021                             Data Engineer         MI                FT         2.266e+06                PL               PL            L                 100.0   27189.852   
+54           2021                              Data Analyst         EN                FT         4.703e+06                FR               FR            M                  50.0   56432.604   
+55           2021                   Data Analytics Engineer         MI                FT         8.753e+06                US               US            L                 100.0  105031.740   
+56           2021                              Data Analyst         SE                FT         6.366e+06                BG               US            S                 100.0   76386.720   
+57           2021                   Data Science Consultant         EN                FT         6.114e+06                DE               DE            S                 100.0   73362.756   
+58           2021                         Lead Data Analyst         MI                FT         1.560e+06                IN               IN            L                 100.0   18723.336   
+59           2021                        Lead Data Engineer         SE                FT         2.196e+07                US               US            L                   0.0  263534.184   
+60           2021                              AI Scientist         EN                PT         9.548e+05                BR               US            S                 100.0   11458.008   
+61           2021                    Financial Data Analyst         MI                FT         3.581e+07                US               US            L                 100.0  429675.300   
+62           2021         Computer Vision Software Engineer         EN                FT         5.570e+06                US               US            M                 100.0   66838.380   
+63           2021         Computer Vision Software Engineer         MI                FT         7.618e+06                DE               US            S                 100.0   91421.532   
+64           2021                             Data Engineer         SE                FT         1.194e+07                US               US            L                 100.0  143225.100   
+65           2021                           BI Data Analyst         MI                FT         2.885e+06                HU               US            L                  50.0   34621.332   
+66           2021                              Data Analyst         MI                FT         4.933e+06                US               US            L                   0.0   59199.708   
+67           2021                        Research Scientist         MI                FT         1.491e+07                CA               CA            L                 100.0  178975.992   
+68           2021                             Data Engineer         SE                FT         9.150e+06                US               US            S                 100.0  109805.916   
+69           2021                             Data Engineer         EN                FT         2.421e+06                IN               IN            L                 100.0   29053.692   
+70           2021              Director of Data Engineering         SE                FT         9.029e+06                GB               GB            M                 100.0  108350.748   
+71           2021                        Lead Data Engineer         SE                FT         8.208e+06                GB               GB            S                 100.0   98500.680   
+72           2021                              AI Scientist         EN                PT         9.548e+05                PK               US            M                 100.0   11458.008   
+73           2021                Machine Learning Scientist         EN                FT         1.790e+07                US               US            L                 100.0  214837.656   
+74           2021                            Data Scientist         MI                FT         3.978e+06                NG               NG            L                 100.0   47741.700   
+75           2021                     Data Science Engineer         MI                FT         3.198e+06                GR               GR            M                 100.0   38373.828   
+76           2021                              Data Analyst         EN                FT         7.161e+06                US               US            S                 100.0   85935.060   
+77           2021                             Data Engineer         MI                FT         1.591e+07                US               US            L                 100.0  190966.800   
+78           2021                   Principal Data Engineer         SE                FT         1.591e+07                US               US            M                 100.0  190966.800   
+79           2021                              Data Analyst         EN                FT         3.978e+06                US               US            M                 100.0   47741.700   
+80           2021                    Applied Data Scientist         EN                FT         8.756e+06                GB               GB            L                   0.0  105067.068   
+81           2021                              Data Analyst         EN                PT         8.239e+05                ES               ES            M                  50.0    9886.356   
+82           2021                            Data Scientist         MI                FT         7.532e+05                IN               IN            S                   0.0    9038.460   
+83           2021                 Machine Learning Engineer         EN                FT         1.591e+06                IN               IN            S                 100.0   19096.680   
+84           2021                       Lead Data Scientist         SE                FT         3.228e+06                IN               IN            L                  50.0   38737.620   
+85           2021                            Data Scientist         EN                FT         3.950e+06                FR               FR            M                  50.0   47403.684   
+86           2021                            Data Scientist         EN                FT         7.957e+06                US               US            S                   0.0   95483.400   
+87           2021                               ML Engineer         MI                FT         5.069e+06                JP               JP            S                  50.0   60833.424   
+88           2021                               ML Engineer         MI                FT         6.156e+06                JP               JP            S                  50.0   73869.780   
+89           2021                  Principal Data Scientist         SE                FT         1.751e+07                US               US            L                   0.0  210063.480   
+90           2021                            Data Scientist         EN                FT         6.366e+06                US               US            M                 100.0   76386.720   
+91           2021                  Data Engineering Manager         SE                FT         1.194e+07                US               US            L                   0.0  143225.100   
+92           2021                            Data Scientist         MI                FT         6.564e+06                US               US            S                 100.0   78773.808   
+93           2021                 Machine Learning Engineer         SE                FT         6.584e+06                BE               BE            M                  50.0   79006.788   
+94           2021                        Research Scientist         MI                FT         4.985e+06                FR               FR            M                  50.0   59819.400   
+95           2021                  Data Engineering Manager         SE                FT         1.217e+07                US               US            L                 100.0  146089.608   
+96           2021                       Cloud Data Engineer         SE                FT         1.273e+07                BR               US            S                 100.0  152773.440   
+97           2021                            Data Scientist         MI                FT         1.194e+07                US               US            M                 100.0  143225.100   
+98           2021                            Data Scientist         EN                FT         1.066e+06                UA               UA            L                 100.0   12794.772   
+99           2021                     Data Science Engineer         SE                FT         1.012e+07                CA               CA            L                  50.0  121474.932   
+100          2021        Applied Machine Learning Scientist         MI                FT         3.366e+07                US               US            L                  50.0  403894.788   
+101          2021                    Data Analytics Manager         SE                FT         9.548e+06                US               US            M                 100.0  114580.080   
+102          2021                 Machine Learning Engineer         EN                FT         9.946e+06                US               US            S                 100.0  119354.256   
+103          2021                      Head of Data Science         EX                FT         6.763e+06                RU               RU            M                   0.0   81160.896   
+104          2021                   Data Science Consultant         EN                FT         5.079e+06                DE               DE            L                  50.0   60948.012   
+105          2021                  Director of Data Science         EX                FT         1.035e+07                DE               DE            M                  50.0  124153.248   
+106          2021                             Data Engineer         EN                FT         6.366e+06                US               US            L                 100.0   76386.720   
+107          2021                  Director of Data Science         EX                FT         1.989e+07                US               US            L                   0.0  238708.500   
+108          2021                            Data Architect         MI                FT         1.194e+07                US               US            L                 100.0  143225.100   
+109          2021                              Data Analyst         EN                FT         4.774e+06                US               US            S                 100.0   57290.040   
+110          2021                  Principal Data Scientist         SE                FT         1.870e+07                US               US            L                 100.0  224385.996   
+111          2021                        Research Scientist         SE                FT         4.834e+06                PT               PT            L                  50.0   58012.848   
+112          2021                            Data Scientist         MI                FT         3.186e+06                CL               CL            L                 100.0   38229.648   
+113          2021                 Machine Learning Engineer         EN                FT         6.445e+06                US               US            S                  50.0   77341.560   
+114          2021                            Data Scientist         MI                FT         4.519e+05                IN               US            S                 100.0    5422.500   
+115          2021                            Data Scientist         MI                FT         7.220e+06                DE               DE            L                  50.0   86635.908   
+116          2021                      Finance Data Analyst         SE                FT         4.925e+06                GB               GB            L                  50.0   59100.408   
+117          2021                Machine Learning Scientist         MI                FL         9.548e+05                PK               PK            M                  50.0   11458.008   
+118          2021                             Data Engineer         MI                FT         3.183e+05                IR               IR            M                 100.0    3819.336   
+119          2021                   Data Analytics Engineer         SE                FT         3.978e+06                VN               GB            M                 100.0   47741.700   
+120          2021                   Data Science Consultant         EX                FT         5.549e+06                FR               ES            S                 100.0   66591.072   
+121          2021                 Machine Learning Engineer         EN                FT         1.738e+06                CO               CO            M                  50.0   20857.392   
+122          2021                         Big Data Engineer         MI                FT         1.432e+06                MD               MD            S                   0.0   17187.012   
+123          2021                      Data Science Manager         SE                FT         1.385e+07                US               US            L                 100.0  166141.116   
+124          2021                        Research Scientist         SE                FT         7.648e+06                CA               CA            L                  50.0   91771.956   
+125          2021                           BI Data Analyst         EN                FT         7.378e+05                KE               KE            S                 100.0    8853.216   
+126          2021                 Machine Learning Engineer         SE                FT         1.937e+06                IN               IN            L                 100.0   23242.572   
+127          2021                   Data Science Consultant         EN                FT         7.161e+06                US               US            S                 100.0   85935.060   
+128          2021  Machine Learning Infrastructure Engineer         SE                FT         1.552e+07                US               US            M                 100.0  186192.636   
+129          2021                            Data Scientist         MI                FT         3.010e+06                ES               ES            L                 100.0   36116.592   
+130          2021                        Research Scientist         SE                FT         3.978e+06                FR               US            S                 100.0   47741.700   
+131          2021                            Data Scientist         MI                FT         1.273e+07                US               US            L                 100.0  152773.440   
+132          2021                            Data Scientist         MI                FT         1.027e+06                BR               BR            S                   0.0   12318.312   
+133          2021                 Machine Learning Engineer         SE                FT         1.591e+07                US               US            L                 100.0  190966.800   
+134          2021                             Data Engineer         SE                FT         1.313e+07                US               US            M                   0.0  157547.616   
+135          2021                        Research Scientist         MI                FT         4.515e+06                FR               FR            S                  50.0   54175.368   
+136          2021                             Data Engineer         MI                FT         5.253e+06                HK               GB            S                  50.0   63040.056   
+137          2021                         Big Data Engineer         EN                FT         4.680e+05                IN               CH            L                   0.0    5616.336   
+138          2021                 Machine Learning Engineer         EN                FT         1.975e+06                DE               DE            M                  50.0   23701.848   
+139          2021                   Principal Data Engineer         SE                FT         1.472e+07                US               US            L                 100.0  176644.296   
+140          2021                            Data Scientist         MI                FT         7.220e+06                DE               DE            L                  50.0   86635.908   
+141          2021                 Machine Learning Engineer         MI                FT         7.054e+06                BE               BE            M                 100.0   84649.848   
+142          2021                    Data Analytics Manager         SE                FT         1.114e+07                US               US            L                 100.0  133676.760   
+143          2021                            Data Scientist         MI                FT         9.303e+06                GB               GB            L                  50.0  111633.468   
+144          2021                            Data Scientist         MI                FT         2.690e+06                IN               IN            M                   0.0   32281.032   
+145          2021                            Data Scientist         MI                FT         4.476e+06                GB               GB            L                  50.0   53715.144   
+146          2021                Machine Learning Scientist         SE                FT         1.790e+07                US               CA            L                 100.0  214837.656   
+147          2021                            Data Scientist         SE                FT         6.981e+06                CA               CA            S                 100.0   83775.228   
+148          2021                            Data Scientist         MI                FT         7.054e+06                DE               DE            L                  50.0   84649.848   
+149          2021                              Data Analyst         SE                FT         5.712e+06                CA               CA            M                 100.0   68543.712   
+150          2021              Director of Data Engineering         SE                FT         1.591e+07                US               US            L                 100.0  190966.800   
+151          2021                              Data Analyst         SE                FT         1.591e+07                US               US            L                 100.0  190966.800   
+152          2021                        Research Scientist         MI                FT         5.077e+06                CA               CA            M                 100.0   60927.960   
+153          2021                            Data Scientist         MI                FT         3.725e+06                ES               ES            M                 100.0   44694.828   
+154          2021                            Data Scientist         EN                FT         3.183e+05                VN               VN            M                   0.0    3819.336   
+155          2021                             Data Engineer         EN                FT         1.722e+06                IN               IN            M                  50.0   20659.740   
+156          2021                              Data Analyst         MI                FT         6.366e+06                US               US            L                 100.0   76386.720   
+157          2021                            Data Scientist         SE                FT         1.313e+07                US               US            L                 100.0  157547.616   
+158          2021                              AI Scientist         EN                FT         1.436e+06                IN               AS            S                 100.0   17237.616   
+159          2021                             Data Engineer         MI                FT         5.746e+06                GB               GB            L                  50.0   68950.476   
+160          2021                            Data Scientist         EN                FT         2.916e+06                FR               FR            L                  50.0   34987.980   
+161          2021                             Data Engineer         SE                FT         7.661e+06                GB               GB            L                  50.0   91933.332   
+162          2021                    Principal Data Analyst         SE                FT         1.353e+07                US               US            M                 100.0  162321.780   
+163          2021                            Data Scientist         EN                FT         7.161e+06                US               US            S                 100.0   85935.060   
+164          2021                            Data Scientist         EN                FT         2.260e+06                IN               IN            M                 100.0   27116.328   
+165          2021                              Data Analyst         MI                FT         7.400e+06                US               US            L                 100.0   88799.568   
+166          2021                             Data Engineer         MI                FT         1.591e+07                US               US            L                 100.0  190966.800   
+167          2021                  Principal Data Scientist         SE                FT         1.383e+07                DE               DE            M                 100.0  165913.860   
+168          2021                 Machine Learning Engineer         SE                FT         1.472e+07                US               US            L                  50.0  176644.296   
+169          2021                  Director of Data Science         EX                FT         1.129e+07                DE               DE            L                   0.0  135439.380   
+170          2021                              Data Analyst         SE                FT         5.079e+06                DE               DE            L                  50.0   60948.012   
+171          2021                            Data Scientist         MI                FT         1.345e+06                IN               IN            S                 100.0   16140.516   
+172          2021                 Machine Learning Engineer         SE                FT         5.273e+06                IN               IN            L                   0.0   63272.076   
+173          2021                        Lead Data Engineer         SE                FT         1.273e+07                PR               US            S                  50.0  152773.440   
+174          2021                             Data Engineer         MI                FT         8.894e+06                US               US            M                   0.0  106726.572   
+175          2021                             Data Engineer         MI                FT         2.229e+06                TR               TR            M                 100.0   26750.628   
+176          2021                             Data Engineer         EN                FT         5.173e+06                DE               DE            M                  50.0   62076.624   
+177          2021                  Computer Vision Engineer         SE                FT         1.504e+06                BR               BR            M                   0.0   18053.052   
+178          2021                   Data Science Consultant         EN                FT         6.114e+06                DE               DE            L                   0.0   73362.756   
+179          2021                            Data Scientist         SE                FT         6.181e+06                FR               FR            M                  50.0   74175.324   
+180          2021                            Data Scientist         EN                FT         4.615e+06                US               US            L                  50.0   55380.372   
+181          2021                              AI Scientist         SE                FT         4.376e+06                ES               ES            L                 100.0   52515.876   
+182          2021                            Data Scientist         SE                FT         1.605e+06                TR               TR            L                  50.0   19259.952   
+183          2021                     Business Data Analyst         EN                FT         4.703e+06                LU               LU            L                 100.0   56432.604   
+184          2021                        Research Scientist         EN                FT         7.957e+06                JE               CN            L                   0.0   95483.400   
+185          2021                      Staff Data Scientist         SE                CT         8.355e+06                US               US            M                 100.0  100257.576   
+186          2021                        Research Scientist         MI                FT         5.570e+06                CZ               CZ            L                  50.0   66837.420   
+187          2021                            Data Scientist         MI                FT         8.673e+06                US               US            L                  50.0  104076.912   
+188          2022                             Data Engineer         SE                FT         1.074e+07                US               US            M                 100.0  128902.596   
+189          2022                              Data Analyst         SE                FT         9.596e+06                US               US            M                 100.0  115152.984   
+190          2022                            Data Scientist         MI                FT         1.034e+07                US               US            M                   0.0  124128.420   
+191          2022                            Data Scientist         MI                FT         7.161e+06                US               US            M                   0.0   85935.060   
+192          2022                             Data Engineer         MI                FT         1.194e+07                US               US            M                 100.0  143225.100   
+193          2022                              Data Analyst         SE                FT         8.124e+06                US               US            M                 100.0   97488.552   
+194          2022                              Data Analyst         SE                FT         6.755e+06                US               US            M                 100.0   81065.412   
+195          2022                            Data Scientist         SE                FT         1.087e+07                US               US            M                 100.0  130449.420   
+196          2022                            Data Scientist         SE                FT         7.906e+06                US               US            M                 100.0   94872.312   
+197          2022                            Data Scientist         SE                FT         8.331e+06                GB               GB            M                   0.0   99973.032   
+198          2022                            Data Scientist         SE                FT         1.162e+07                US               US            M                 100.0  139405.764   
+199          2022                            Data Scientist         SE                FT         9.787e+06                US               US            M                 100.0  117444.588   
+200          2022                              Data Analyst         SE                FT         7.877e+06                US               US            M                   0.0   94528.572   
+201          2022                              Data Analyst         MI                FT         8.455e+06                US               US            M                   0.0  101460.660   
+202          2022                             Data Engineer         EX                FT         1.926e+07                US               US            M                 100.0  231069.828   
+203          2022                            Data Scientist         MI                FT         5.207e+06                GB               GB            M                   0.0   62482.428   
+204          2022                             Data Engineer         MI                FT         6.248e+06                GB               GB            M                   0.0   74979.300   
+205          2022                             Data Engineer         MI                FT         4.166e+06                GB               GB            M                   0.0   49986.516   
+206          2022                             Data Engineer         EN                FT         3.645e+06                GB               GB            M                 100.0   43738.080   
+207          2022                            Data Scientist         SE                FT         9.561e+06                US               US            M                 100.0  114732.852   
+208          2022                              Data Analyst         SE                FT         7.187e+06                US               US            M                 100.0   86240.604   
+209          2022                             Data Engineer         SE                FT         1.448e+07                US               US            M                   0.0  173722.500   
+210          2022                             Data Engineer         SE                FT         1.751e+07                US               US            M                   0.0  210168.516   
+211          2022                             Data Engineer         SE                FT         1.274e+07                US               US            M                   0.0  152849.832   
+212          2022                              Data Analyst         EX                FT         1.034e+07                US               US            M                 100.0  124128.420   
+213          2022                              Data Analyst         EX                FT         8.753e+06                US               US            M                 100.0  105031.740   
+214          2022                              Data Analyst         SE                FT         1.353e+07                US               US            M                 100.0  162321.780   
+215          2022                              Data Analyst         SE                FT         7.187e+06                US               US            M                 100.0   86240.604   
+216          2022                              Data Analyst         SE                FT         8.983e+06                US               US            M                 100.0  107800.764   
+217          2022                              Data Analyst         SE                FT         7.187e+06                US               US            M                 100.0   86240.604   
+218          2022                             Data Engineer         SE                FT         1.316e+07                US               US            M                 100.0  157929.540   
+219          2022                             Data Engineer         SE                FT         1.053e+07                US               US            M                 100.0  126343.632   
+220          2022                             Data Engineer         SE                FT         1.941e+07                US               US            M                 100.0  232884.012   
+221          2022                              Data Analyst         SE                FT         8.695e+06                US               US            M                 100.0  104344.260   
+222          2022                             Data Engineer         SE                FT         7.456e+06                US               US            M                 100.0   89467.944   
+223          2022                      Head of Data Science         EX                FT         1.336e+07                US               US            M                 100.0  160292.760   
+224          2022                        Analytics Engineer         EX                FT         1.392e+07                US               US            M                 100.0  167095.956   
+225          2022                             Data Engineer         SE                FT         8.657e+06                US               US            M                   0.0  103885.944   
+226          2022                            Data Scientist         SE                FT         7.603e+06                US               US            M                   0.0   91234.392   
+227          2022                             Data Engineer         SE                FT         8.991e+06                US               US            L                   0.0  107896.248   
+228          2022                              Data Analyst         SE                FT         1.074e+07                US               US            M                 100.0  128902.596   
+229          2022                      Data Science Manager         SE                FT         1.091e+07                US               US            M                 100.0  130946.892   
+230          2022                            Data Scientist         SE                FT         9.787e+06                US               US            M                 100.0  117444.588   
+231          2022                             Data Engineer         SE                FT         6.248e+06                GB               GB            M                   0.0   74979.300   
+232          2022                             Data Engineer         SE                FT         5.207e+06                GB               GB            M                   0.0   62482.428   
+233          2022                            Data Scientist         SE                FT         1.194e+07                US               US            M                   0.0  143225.100   
+234          2022                            Data Architect         SE                FT         1.531e+07                CA               CA            M                 100.0  183710.064   
+235          2022                            Data Architect         SE                FT         7.217e+06                CA               CA            M                 100.0   86603.448   
+236          2022                              Data Analyst         SE                FT         1.034e+07                CA               CA            M                 100.0  124128.420   
+237          2022                              Data Analyst         SE                FT         4.878e+06                CA               CA            M                 100.0   58531.320   
+238          2022                            Data Scientist         SE                FT         1.103e+07                US               US            M                 100.0  132339.996   
+239          2022                             Data Engineer         SE                FT         1.082e+07                US               US            M                   0.0  129857.424   
+240          2022                              Data Analyst         MI                FT         4.615e+06                US               US            S                   0.0   55380.372   
+241          2022                        Analytics Engineer         EX                FT         1.074e+07                US               US            M                 100.0  128902.596   
+242          2022                            Data Scientist         SE                FT         1.353e+07                US               US            M                 100.0  162321.780   
+243          2022                 Machine Learning Engineer         SE                FT         1.509e+07                US               US            M                   0.0  181084.272   
+244          2022                 Machine Learning Engineer         SE                FT         1.313e+07                US               US            M                   0.0  157543.788   
+245          2022                             ETL Developer         MI                FT         4.373e+06                GR               GR            M                   0.0   52474.812   
+246          2022                             Data Engineer         SE                FT         1.316e+07                US               US            M                 100.0  157929.540   
+247          2022                            Data Architect         SE                FT         1.176e+07                US               US            M                 100.0  141124.464   
+248          2022                             Data Engineer         SE                FT         8.082e+06                US               US            M                 100.0   96982.488   
+249          2022                              Data Analyst         SE                FT         1.025e+07                US               US            M                 100.0  123054.228   
+250          2022                              Data Analyst         SE                FT         7.456e+06                US               US            M                 100.0   89467.944   
+251          2022                  Head of Machine Learning         EX                FT         6.289e+06                IN               IN            L                  50.0   75469.128   
+252          2022                             Data Engineer         SE                FT         1.053e+07                US               US            M                 100.0  126343.632   
+253          2022                 Machine Learning Engineer         EN                FT         2.968e+06                GB               GB            L                 100.0   35615.304   
+254          2022                              Data Analyst         SE                FT         1.305e+07                US               US            M                   0.0  156592.776   
+255          2022                             Data Engineer         SE                FT         1.233e+07                US               US            M                 100.0  147999.276   
+256          2022                 Machine Learning Engineer         MI                FT         9.893e+06                GB               GB            M                   0.0  118717.380   
+257          2022                              AI Scientist         MI                FT         9.548e+06                US               US            M                   0.0  114580.080   
+258          2022                              Data Analyst         SE                FT         8.983e+06                US               US            M                 100.0  107800.764   
+259          2022                              Data Analyst         SE                FT         7.187e+06                US               US            M                 100.0   86240.604   
+260          2022                    Data Analytics Manager         SE                FT         1.154e+07                US               US            M                 100.0  138450.936   
+261          2022                    Data Analytics Manager         SE                FT         8.387e+06                US               US            M                 100.0  100639.500   
+262          2022                             Data Engineer         MI                FT         9.372e+06                GB               GB            M                   0.0  112468.944   
+263          2022                            Data Scientist         SE                FT         1.713e+07                US               US            L                 100.0  205575.756   
+264          2022                             Data Engineer         SE                FT         1.230e+07                US               US            L                 100.0  147617.340   
+265          2022                              Data Analyst         SE                FT         9.225e+06                US               US            M                   0.0  110697.720   
+266          2022                              Data Analyst         SE                FT         6.498e+06                US               US            M                   0.0   77977.476   
+267          2022                             Data Engineer         SE                FT         1.392e+07                US               US            M                 100.0  167095.956   
+268          2022                              Data Analyst         MI                FT         4.615e+06                US               US            S                   0.0   55380.372   
+269          2022                             Data Engineer         SE                FT         1.461e+07                US               US            L                 100.0  175307.520   
+270          2022                              Data Analyst         MI                FT         4.166e+06                GB               GB            M                 100.0   49986.516   
+271          2022                            Data Scientist         SE                FT         1.432e+07                US               US            M                 100.0  171870.120   
+272          2022                            Data Scientist         MI                FT         3.645e+06                GB               GB            M                   0.0   43738.080   
+273          2022                             Data Engineer         MI                FT         5.248e+06                GR               GR            M                 100.0   62970.348   
+274          2022                             Data Engineer         MI                FT         3.936e+06                GR               GR            M                 100.0   47227.044   
+275          2022                             Data Engineer         MI                FT         4.686e+06                GB               GB            M                 100.0   56233.992   
+276          2022                     Data Science Engineer         SE                FT         4.774e+06                AR               MX            L                 100.0   57290.040   
+277          2022                Machine Learning Scientist         MI                FT         1.273e+07                US               US            L                 100.0  152773.440   
+278          2022                      Data Science Manager         MI                FT         1.918e+07                US               US            M                 100.0  230115.000   
+279          2022                      Data Science Manager         MI                FT         1.265e+07                US               US            M                 100.0  151818.612   
+280          2022                            Data Scientist         SE                FT         6.366e+06                US               US            M                   0.0   76386.720   
+281          2022                             Data Engineer         SE                FT         8.021e+06                US               US            L                 100.0   96247.272   
+282          2022                             Data Engineer         MI                FT         3.936e+06                ES               ES            M                 100.0   47227.044   
+283          2022                            Data Scientist         SE                FT         1.117e+07                US               US            L                   0.0  134058.696   
+284          2022                              Data Analyst         MI                FT         3.124e+06                GB               GB            M                 100.0   37489.644   
+285          2022                              Data Analyst         MI                FT         2.624e+06                ES               ES            M                 100.0   31484.700   
+286          2022                             Data Engineer         MI                FT         6.122e+06                ES               ES            M                 100.0   73464.924   
+287          2022                             Data Engineer         MI                FT         8.331e+06                GB               GB            M                 100.0   99973.032   
+288          2022                             Data Engineer         MI                FT         5.248e+06                ES               ES            M                 100.0   62970.348   
+289          2022                 Machine Learning Engineer         SE                FT         1.509e+07                US               US            M                   0.0  181084.272   
+290          2022                 Machine Learning Engineer         SE                FT         1.313e+07                US               US            M                   0.0  157543.788   
+291          2022                             Data Engineer         MI                FT         6.248e+06                GB               GB            M                 100.0   74979.300   
+292          2022                            Data Scientist         SE                FT         1.713e+07                US               US            L                   0.0  205575.756   
+293          2022                             Data Engineer         MI                FT         6.122e+06                GR               GR            M                 100.0   73464.924   
+294          2022                             Data Engineer         SE                FT         1.664e+07                US               US            L                 100.0  199655.784   
+295          2022                             Data Engineer         SE                FT         1.230e+07                US               US            L                 100.0  147617.340   
+296          2022                             Data Engineer         SE                FT         1.432e+07                US               US            M                 100.0  171870.120   
+297          2022                               ML Engineer         EN                FT         1.749e+06                PT               PT            L                 100.0   20990.112   
+298          2022                Machine Learning Developer         MI                FT         6.269e+06                CA               CA            M                 100.0   75232.320   
+299          2022                  Director of Data Science         EX                FT         1.567e+07                CA               CA            L                  50.0  188082.252   
+300          2022                 Machine Learning Engineer         MI                FT         9.548e+06                US               US            S                 100.0  114580.080   
+301          2022                  Computer Vision Engineer         EN                FT         9.946e+06                US               US            M                   0.0  119354.256   
+302          2022                              NLP Engineer         MI                FT         2.963e+06                US               US            L                  50.0   35554.200   
+303          2022            Lead Machine Learning Engineer         SE                FT         6.997e+06                DE               DE            M                   0.0   83960.460   
+304          2022                     Business Data Analyst         MI                FT         1.467e+06                IN               IN            M                 100.0   17609.052   
+305          2022                            Data Scientist         MI                FT         2.516e+06                IN               IN            L                 100.0   30187.080   
+306          2022                    Financial Data Analyst         EN                FT         7.957e+06                US               US            L                  50.0   95483.400   
+307          2022                            Data Scientist         EN                FT         1.467e+06                IN               IN            M                 100.0   17609.052   
+308          2022                  Principal Data Scientist         SE                FT         1.294e+07                DE               DE            M                 100.0  155326.668   
+309          2022                        Research Scientist         SE                FT         1.146e+07                US               US            L                  50.0  137496.096   
+310          2022                            Data Scientist         SE                FT         8.346e+06                US               US            M                 100.0  100152.540   
+311          2022                            Data Scientist         SE                FT         1.114e+07                US               US            M                 100.0  133676.760   
+312          2022                              Data Analyst         MI                FT         3.978e+06                US               US            M                 100.0   47741.700   
+313          2022                            Data Scientist         SE                FT         1.751e+07                US               US            M                 100.0  210063.480   
+314          2022                            Data Scientist         SE                FT         1.114e+07                US               US            M                 100.0  133676.760   
+315          2022                            Data Scientist         MI                FT         1.458e+07                GB               GB            M                   0.0  174952.320   
+316          2022                            Data Scientist         SE                FT         1.473e+07                US               US            M                 100.0  176739.768   
+317          2022                 Machine Learning Engineer         SE                FT         1.751e+07                US               US            M                 100.0  210063.480   
+318          2022                            Data Scientist         MI                FT         1.591e+07                US               US            M                 100.0  190966.800   
+319          2022                            Data Scientist         MI                FT         9.548e+06                US               US            M                 100.0  114580.080   
+320          2022                 Machine Learning Engineer         SE                FT         5.172e+06                AE               AE            S                 100.0   62064.216   
+321          2022                             Data Engineer         EX                FT         2.578e+07                US               US            M                 100.0  309366.216   
+322          2022                 Machine Learning Engineer         SE                FT         9.548e+06                US               US            M                 100.0  114580.080   
+323          2022                            Data Scientist         EN                PT         7.957e+06                DZ               DZ            M                  50.0   95483.400   
+324          2022                            Data Scientist         MI                FL         7.957e+06                CA               US            M                 100.0   95483.400   
+325          2022        Applied Machine Learning Scientist         EN                CT         2.536e+06                TN               CZ            M                 100.0   30435.336   
+326          2022                    Principal Data Analyst         MI                FT         5.968e+06                CA               CA            S                 100.0   71612.556   
+327          2022                            Data Scientist         MI                FT         2.832e+06                PL               PL            L                 100.0   33982.548   
+328          2022                Machine Learning Developer         SE                FT         6.269e+06                CA               CA            M                 100.0   75232.320   
+329          2022                             Data Engineer         EN                FT         4.618e+06                PK               DE            M                 100.0   55413.792   
+330          2022                            Data Scientist         SE                FT         1.313e+07                US               US            M                 100.0  157547.616   
+331          2022                        Research Scientist         SE                FT         7.434e+06                FR               FR            L                  50.0   89207.280   
+332          2022                            Data Scientist         EN                FT         4.169e+06                CA               CA            L                 100.0   50029.488   
+333          2022                              Head of Data         MI                FT         2.624e+06                EE               EE            S                 100.0   31484.700   
+334          2022                            Data Scientist         EN                FT         3.183e+06                JP               MY            L                 100.0   38193.360   
+335          2022                 Machine Learning Engineer         MI                FT         6.956e+06                AU               AU            L                 100.0   83476.368   
+336          2022                            Data Scientist         EN                FT         6.899e+06                AU               AU            M                  50.0   82786.968   
+337          2022                        Research Scientist         MI                FT         5.160e+06                AT               AT            L                   0.0   61920.036   
+338          2022                        Research Scientist         EN                FT         9.548e+06                US               US            L                 100.0  114580.080   
+339          2022                    Applied Data Scientist         MI                FT         1.249e+07                US               US            L                 100.0  149908.944   
+340          2022                     Business Data Analyst         MI                FT         5.642e+06                CA               CA            L                  50.0   67709.184   
+341          2022                             Data Engineer         EN                FT         5.172e+06                US               US            S                 100.0   62064.216   
+342          2022                   Data Analytics Engineer         EN                FT         1.591e+06                PK               PK            M                   0.0   19096.680   
+343          2022                            Data Scientist         MI                FT         3.819e+06                RU               US            S                 100.0   45832.032   
+344          2022                      Data Science Manager         SE                FT         1.213e+07                US               US            M                 100.0  145612.188   
+345          2022                            Data Scientist         MI                FT         9.735e+06                CH               CH            L                   0.0  116820.120   
+346          2022                    Applied Data Scientist         SE                FT         3.024e+07                US               US            L                 100.0  362836.920   
+347          2022                  Computer Vision Engineer         EN                FT         7.957e+05                PT               LU            M                 100.0    9548.340   
+348          2022                       Data Analytics Lead         SE                FT         3.223e+07                US               US            L                 100.0  386707.776   
+349          2022                            Data Scientist         MI                FT         1.074e+07                US               US            L                 100.0  128902.596   
+350          2022                            Data Scientist         MI                FT         6.206e+06                US               US            M                 100.0   74477.052   
+351          2022                              Data Analyst         SE                FT         1.074e+07                US               US            M                 100.0  128902.596   
+352          2022                              Data Analyst         SE                FT         7.187e+06                US               US            M                 100.0   86240.604   
+353          2022                              Data Analyst         MI                FT         5.968e+06                CA               CA            M                   0.0   71612.556   
+354          2022                 Machine Learning Engineer         SE                FT         1.533e+07                US               US            M                 100.0  183901.032   
+355          2022                            Data Architect         SE                FT         2.120e+07                US               US            M                 100.0  254367.780   
+356          2022                            Data Architect         SE                FT         1.696e+07                US               US            M                 100.0  203494.224   
+357          2022                              Data Analyst         SE                FT         8.983e+06                US               US            M                 100.0  107800.764   
+358          2022                             Data Engineer         SE                FT         1.233e+07                US               US            M                 100.0  147999.276   
+359          2022                            Data Scientist         MI                FT         1.124e+07                US               US            M                   0.0  134918.040   
+360          2022                            Data Scientist         MI                FT         8.124e+06                US               US            M                   0.0   97488.552   
+361          2022                              Data Analyst         SE                FT         6.498e+06                US               US            M                 100.0   77977.476   
+362          2022                             Data Engineer         MI                FT         1.645e+07                US               US            M                   0.0  197363.232   
+363          2022                             Data Engineer         MI                FT         7.885e+06                US               US            M                   0.0   94624.044   
+364          2022                             Data Engineer         SE                FT         1.034e+07                US               US            M                 100.0  124128.420   
+365          2022                             Data Engineer         SE                FT         9.150e+06                US               US            M                 100.0  109805.916   
+366          2022                             Data Engineer         SE                FT         1.034e+07                US               US            M                 100.0  124128.420   
+367          2022                              Data Analyst         SE                FT         7.881e+06                US               US            M                 100.0   94576.308   
+368          2022                             Data Engineer         SE                FT         1.273e+07                US               US            M                 100.0  152773.440   
+369          2022                            Data Scientist         SE                FT         1.400e+07                US               US            M                 100.0  168050.784   
+370          2022                            Data Scientist         SE                FT         1.146e+07                US               US            M                 100.0  137496.096   
+371          2022                             Data Engineer         SE                FT         1.592e+07                US               US            M                 100.0  191062.284   
+372          2022                             Data Engineer         SE                FT         1.154e+07                US               US            M                 100.0  138450.936   
+373          2022                             Data Engineer         SE                FT         5.610e+06                US               US            M                   0.0   67315.800   
+374          2022                            Data Scientist         SE                FT         1.117e+07                US               US            M                   0.0  134058.696   
+375          2022                        Analytics Engineer         SE                FT         1.470e+07                US               US            M                   0.0  176357.844   
+376          2022                             Data Engineer         SE                FT         1.393e+07                US               US            M                 100.0  167191.428   
+377          2022                             Data Engineer         SE                FT         1.116e+07                US               US            M                 100.0  133915.464   
+378          2022                             Data Engineer         SE                FT         4.297e+06                US               US            M                   0.0   51561.036   
+379          2022                              Data Analyst         SE                FT         1.353e+07                US               US            M                 100.0  162321.780   
+380          2022                              Data Analyst         SE                FT         6.366e+06                US               US            M                 100.0   76386.720   
+381          2022                            Data Scientist         SE                FT         1.114e+07                US               US            M                 100.0  133676.760   
+382          2022                            Data Scientist         SE                FT         1.114e+07                US               US            M                 100.0  133676.760   
+383          2022                              Data Analyst         SE                FT         5.490e+06                US               US            M                 100.0   65883.552   
+384          2022                            Data Scientist         SE                FT         1.671e+07                US               US            M                 100.0  200515.140   
+385          2022                              Data Analyst         SE                FT         1.194e+07                US               US            M                 100.0  143296.716   
+386          2022                             Data Engineer         SE                FT         7.957e+06                US               US            M                 100.0   95483.400   
+387          2022                             Data Engineer         SE                FT         1.989e+06                US               US            M                 100.0   23870.856   
+388          2022                              Data Analyst         SE                FT         8.455e+06                US               US            M                 100.0  101460.660   
+389          2022                             Data Engineer         SE                FT         1.751e+07                US               US            M                 100.0  210168.516   
+390          2022                             Data Engineer         SE                FT         1.274e+07                US               US            M                 100.0  152849.832   
+391          2022                              Data Analyst         SE                FT         8.355e+06                US               US            M                 100.0  100257.576   
+392          2022                              Data Analyst         MI                FT         3.645e+06                GB               GB            M                   0.0   43738.080   
+393          2022                            Data Scientist         SE                FT         1.114e+07                US               US            M                 100.0  133676.760   
+394          2022                            Data Architect         SE                FT         1.153e+07                US               US            M                 100.0  138311.520   
+395          2022                            Data Scientist         SE                FT         1.830e+07                US               US            M                 100.0  219611.820   
+396          2022                            Data Scientist         SE                FT         1.194e+07                US               US            M                 100.0  143225.100   
+397          2022                    Data Analytics Manager         SE                FT         8.695e+06                US               US            M                 100.0  104344.260   
+398          2022                            Data Scientist         SE                FT         1.671e+07                US               US            M                 100.0  200515.140   
+399          2022                              Data Analyst         SE                FT         1.353e+07                US               US            M                 100.0  162321.780   
+400          2022                            Data Scientist         MI                FT         1.034e+07                US               US            M                 100.0  124128.420   
+401          2022                              Data Analyst         EN                FT         4.138e+06                CA               CA            M                   0.0   49651.368   
+402          2022                             Data Engineer         SE                FT         1.225e+07                US               US            M                 100.0  147044.436   
+403          2022                             Data Engineer         SE                FT         1.003e+07                US               US            M                 100.0  120309.084   
+404          2022                              Data Analyst         SE                FT         1.026e+07                US               US            M                   0.0  123173.592   
+405          2022                              Data Analyst         SE                FT         1.194e+07                US               US            M                 100.0  143225.100   
+406          2022                              AI Scientist         MI                FT         1.591e+07                IN               US            L                 100.0  190966.800   
