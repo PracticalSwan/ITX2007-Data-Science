@@ -15,7 +15,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
   - `6726077_SithuWinSan_L2.ipynb` - Main lecture assignment covering data fundamentals
 
 - **Practice Files:**
-  - `midterem_practice_L2.ipynb` - Midterm practice exercises
+  - `midterm_practice_L2.ipynb` - Midterm practice exercises
   - `netflix.ipynb` - Netflix dataset analysis practice
 
 - **Datasets:**
