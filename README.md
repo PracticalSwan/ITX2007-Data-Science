@@ -1,4 +1,4 @@
-# ITX2007 Data Science - Course Assignments
+# ITX2007 Data Science - Course Files
 
 This repository contains all assignments and datasets for the **ITX2007 Data Science** course at Assumption University of Thailand. The course covers fundamental to intermediate data science concepts using Python and Jupyter Notebooks.
 
@@ -11,10 +11,12 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 ### Lecture 2: Data Fundamentals
 **Topics:** Introduction to data types, basic data manipulation, and visualization
 
-- **Assignment Files:**
-  - `6726077_SithuWinSan_L2.ipynb` - Main lecture 2 assignment
+- **Lecture File:**
+  - `6726077_SithuWinSan_L2.ipynb` - Main lecture assignment covering data fundamentals
+
+- **Practice Files:**
   - `midterem_practice_L2.ipynb` - Midterm practice exercises
-  - `netflix.ipynb` - Netflix dataset analysis exercise
+  - `netflix.ipynb` - Netflix dataset analysis practice
 
 - **Datasets:**
   - `netflix_data.csv` - Netflix movies and shows dataset
@@ -34,9 +36,11 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 ### Lecture 3: Exploratory Data Analysis (EDA) - Part 1
 **Topics:** Data profiling, statistical analysis, and advanced visualization
 
-- **Assignment Files:**
-  - `6726077_SithuWinSan_L3.ipynb` - Main lecture 3 assignment
-  - `midterm_practice_L3.ipynb` - Midterm practice exercises
+- **Lecture File:**
+  - `6726077_SithuWinSan_L3.ipynb` - Main lecture assignment on EDA techniques
+
+- **Practice Files:**
+  - `midterm_practice_L3.ipynb` - Comprehensive EDA practice exercises
 
 - **Datasets:**
   - `avocados.csv` - Avocado prices and sales
@@ -77,8 +81,11 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 ### Lecture 4: Data Cleaning & Preprocessing
 **Topics:** Data quality assessment, missing values, and data transformation
 
-- **Assignment Files:**
-  - `6726077_SithuWinSan_L4.ipynb` - Main lecture 4 assignment
+- **Lecture File:**
+  - `6726077_SithuWinSan_L4.ipynb` - Main lecture assignment on data cleaning and preprocessing
+
+- **Practice Files:**
+  - `midterm_practice_L4.ipynb` - Midterm practice exercises for data cleaning
 
 - **Datasets (Airline Data):**
   - `Airline.csv`, `Airline.txt` - Complete airline dataset
@@ -107,8 +114,11 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 ### Lecture 5: Exploratory Data Analysis (EDA) - Part 2
 **Topics:** Advanced EDA techniques and hypothesis testing
 
-- **Assignment Files:**
-  - `6726077_SithuWinSan_L5.ipynb` - Main lecture 5 assignment
+- **Lecture File:**
+  - `6726077_SithuWinSan_L5.ipynb` - Main lecture assignment on advanced EDA and statistical testing
+
+- **Practice Files:**
+  - `midterm_practice_L5.ipynb` - Midterm practice exercises for advanced EDA
 
 - **Datasets:**
   - `Airlines_unclean.csv` - Unclean airline data for advanced analysis
@@ -128,8 +138,11 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 ### Lecture 6: Data Joining & Merging
 **Topics:** Combining multiple data sources and relational data operations
 
-- **Assignment Files:**
-  - `6726077_SithuWinSan_L6.ipynb` - Main lecture 6 assignment
+- **Practice Files:**
+  - `midterm_practice_L6.ipynb` - Midterm practice exercises for data joining and merging
+
+- **Lecture File:**
+  - `6726077_SithuWinSan_L6.ipynb` - Main lecture assignment on data merging and joins
 
 - **Datasets (Multiple Sources for Merging):**
   - **Inventory Data:** `inv_jul.csv`, `inv_aug.csv`, `inv_sep.csv` (with corresponding `.txt` versions)
@@ -240,7 +253,7 @@ By completing all assignments in this repository, students will be able to:
 - Some notebooks include practice exercises from midterm preparation
 - Data sizes vary; some datasets (Netflix, airlines) are larger and may take time to process
 - Pickle files contain pre-processed data objects for advanced analyses
-
+3
 ---
 
 *Last Updated: January 2, 2026*
