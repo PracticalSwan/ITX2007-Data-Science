@@ -1,0 +1,47 @@
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Security - API Keys and Credentials
+.env
+.env.local
+.env.*.local
+secrets.json
+config.json
+credentials.json
+*.key
+*.pem
+*.p12
+
+# Distribution / Packaging
+dist/
+build/
+*.egg-info/
