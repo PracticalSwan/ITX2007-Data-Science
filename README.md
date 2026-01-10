@@ -180,6 +180,31 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
+### Midterm Examination Files
+**Topics:** Comprehensive assessment of data science fundamentals, EDA, and data preprocessing
+
+- **Midterm Notebooks:**
+  - `ITX2007_6726077_SithuWinSan_Midterm_2_2025_Q1.ipynb` - Midterm Question 1 submission
+  - `ITX2007_6726077_SithuWinSan_Midterm_2_2025_Q2.ipynb` - Midterm Question 2 submission
+
+- **Datasets:**
+  - `employees.csv` - Employee demographic and performance data
+  - `foods_data.csv` - Food items with nutritional information
+  - `food_mg.csv` - Food magnesium content dataset
+
+**Exam Coverage:**
+- Application of all concepts from Lectures 2-6
+- Real-world data analysis scenarios
+- Data cleaning and preprocessing techniques
+- Exploratory data analysis
+- Data transformation and feature engineering
+- Statistical analysis and insights generation
+- Data visualization best practices
+
+**Note:** This folder contains the official midterm examination submissions for Semester 2, 2025. The exam tested comprehensive understanding of pandas, data manipulation, statistical analysis, and problem-solving skills covered throughout the course.
+
+---
+
 ## Technology Stack
 
 - **Language:** Python 3
@@ -202,6 +227,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 | 4 | Airlines, Salaries, Divorce, Books | 1000-10,000 | Data Cleaning |
 | 5 | Airlines, Salaries, Divorce | 1000-5,000 | Advanced EDA |
 | 6 | Movies, Music, Economics, Chicago, Inventory | Variable | Data Merging |
+| Midterm | Employees, Foods, Food Nutrients | Variable | Comprehensive Assessment |
 
 ---
 
@@ -258,4 +284,4 @@ By completing all assignments in this repository, students will be able to:
 3
 ---
 
-*Last Updated: January 2, 2026*
+*Last Updated: January 11, 2026*
