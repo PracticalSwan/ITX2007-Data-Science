@@ -45,3 +45,6 @@ credentials.json
 dist/
 build/
 *.egg-info/
+
+# Agent
+.agent/
