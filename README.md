@@ -180,6 +180,59 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
+### Lecture 7: Introduction to Statistics
+**Topics:** Statistical foundations, probability distributions, and hypothesis testing
+
+- **Lecture File:**
+  - `6726077_SithuWinSan_L7.ipynb` - Main lecture assignment on statistical analysis
+
+- **Practice Files:**
+  - `notebook.ipynb` - Additional statistical practice
+  - `WorldOldestBusinesses.ipynb` - Case study on world's oldest businesses
+
+- **Datasets:**
+  - `food_consumption.csv` - Global food consumption patterns
+  - `world_happiness.csv` - World happiness index data
+  - `amir_deals.csv` - Sales deals dataset
+  - `restaurant_groups.csv`, `restuaraunt_groups.txt` - Restaurant chain data
+
+**Skills Covered:**
+- Descriptive statistics
+- Probability distributions (normal, binomial, etc.)
+- Statistical inference
+- Hypothesis testing (t-tests, chi-square)
+- Confidence intervals
+- Statistical significance
+- A/B testing fundamentals
+
+---
+
+### Lecture 8: Regression Analysis
+**Topics:** Linear regression, multiple regression, and predictive modeling
+
+- **Lecture File:**
+  - `6726077_SithuWinSan_L8.ipynb` - Main lecture assignment on regression techniques
+
+- **Datasets:**
+  - `fish.csv` - Fish market data for regression analysis
+  - `taiwan_real_estate2.csv` - Taiwan real estate prices
+  - `swedish_motor_insurance.csv` - Insurance claims data
+  - `sp500_yearly_returns.csv` - S&P 500 historical returns
+  - `ad_conversion.csv` - Advertising conversion rates
+  - `churn.csv` - Customer churn prediction data
+
+**Skills Covered:**
+- Simple linear regression
+- Multiple linear regression
+- Model evaluation (R², RMSE, MAE)
+- Feature selection
+- Residual analysis
+- Multicollinearity detection
+- Prediction and forecasting
+- Model interpretation
+
+---
+
 ### Midterm Examination Files
 **Topics:** Comprehensive assessment of data science fundamentals, EDA, and data preprocessing
 
@@ -228,6 +281,8 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 | 5 | Airlines, Salaries, Divorce | 1000-5,000 | Advanced EDA |
 | 6 | Movies, Music, Economics, Chicago, Inventory | Variable | Data Merging |
 | Midterm | Employees, Foods, Food Nutrients | Variable | Comprehensive Assessment |
+| 7 | Food Consumption, Happiness, Businesses | 100-10,000 | Statistics |
+| 8 | Fish, Real Estate, Insurance, Stocks | 500-5,000 | Regression |
 
 ---
 
@@ -272,6 +327,9 @@ By completing all assignments in this repository, students will be able to:
 - ✅ Merge and combine multiple data sources
 - ✅ Generate actionable business insights from data
 - ✅ Apply statistical methods to validate findings
+- ✅ Conduct hypothesis testing and statistical inference
+- ✅ Build and evaluate regression models
+- ✅ Make predictions using machine learning techniques
 
 ---
 
@@ -284,4 +342,4 @@ By completing all assignments in this repository, students will be able to:
 3
 ---
 
-*Last Updated: January 11, 2026*
+*Last Updated: January 28, 2026*
