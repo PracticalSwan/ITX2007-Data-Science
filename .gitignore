@@ -50,3 +50,4 @@ build/
 # Agent
 .agent/
 .github/
+.claude/
