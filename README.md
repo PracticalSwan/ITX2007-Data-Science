@@ -207,6 +207,58 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
+### Lecture 9: Machine Learning - Classification
+**Topics:** K-Nearest Neighbors (KNN), classification algorithms, and model evaluation
+
+- **Lecture File:**
+  - `6726077_SithuWinSan_L9.ipynb` - Main lecture assignment on classification with KNN
+
+- **Datasets:**
+  - `churn_df.csv`, `churn_df.txt` - Customer churn classification data
+  - `diabetes.csv`, `diabetes_clean.csv` - Diabetes prediction dataset
+  - `music.csv`, `music_df.txt`, `music_unclean.csv`, `music_unclean.txt`, `music_unsort.csv` - Music classification data
+  - `advertising_and_sales_clean.csv` - Advertising campaigns with sales outcomes
+  - `sales_df.csv` - Sales data for classification tasks
+  - `telecom_churn_clean.csv` - Telecommunications customer churn data
+
+**Skills Covered:**
+- K-Nearest Neighbors (KNN) classifier
+- Training and testing splits
+- Model accuracy evaluation
+- Hyperparameter tuning (number of neighbors)
+- Overfitting and underfitting detection
+- Classification performance metrics
+- Feature selection for classification
+
+---
+
+### Lecture 10: Advanced Machine Learning
+**Topics:** Cross-validation, model tuning, advanced preprocessing, and model pipelines
+
+- **Lecture File:**
+  - `6726077_SithuWinSan_L10.ipynb` - Main lecture assignment on advanced ML techniques
+
+- **Datasets:**
+  - `churn_df.csv`, `churn_df.txt` - Customer churn for advanced classification
+  - `diabetes.csv`, `diabetes_clean.csv` - Diabetes prediction for model evaluation
+  - `music.csv`, `music_df.txt`, `music_unclean.csv`, `music_unclean.txt`, `music_unsort.csv` - Music data with categorical features
+  - `advertising_and_sales_clean.csv` - Advertising data for regression models
+  - `sales_df.csv` - Sales data for supervised learning
+  - `telecom_churn_clean.csv` - Telecom churn for model comparison
+
+**Skills Covered:**
+- Cross-validation techniques (K-Fold)
+- Model performance evaluation with cross-validation
+- SimpleImputer for missing value handling
+- LabelEncoder for categorical data transformation
+- One-hot encoding with pandas
+- Combining numerical and categorical features
+- Multiple model comparison
+- Root Mean Squared Error (RMSE) calculation
+- Model selection and hyperparameter optimization
+
+---
+
 ### Lecture 8: Regression Analysis
 **Topics:** Linear regression, multiple regression, and predictive modeling
 
@@ -258,6 +310,37 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
+### Lecture 11: Machine Learning - Credit Card Prediction
+**Topics:** Credit card approval prediction, advanced preprocessing, hyperparameter tuning, and model comparison
+
+- **Lecture File:**
+  - `6726077_SithuWinSan_L11.ipynb` - Main lecture assignment on credit card prediction
+
+- **Datasets:**
+  - `cc_approvals.data` - Credit card approval application data
+
+**Skills Covered:**
+- Handling missing values with mean imputation
+- Categorical data encoding using LabelEncoder
+- MinMaxScaler for feature normalization
+- Logistic Regression for binary classification
+- K-Nearest Neighbors (KNN) classifier
+- Elbow Method for finding optimal k value
+- GridSearchCV for hyperparameter tuning with cross-validation
+- Confusion matrix analysis
+- Model accuracy evaluation and comparison
+- Train-test splitting strategies
+- Feature selection and correlation analysis
+
+**Key Models Implemented:**
+- Logistic Regression with `max_iter=1000`
+- KNN Classifier with k=5 (default)
+- KNN with optimal k from Elbow Method
+- KNN with optimal k from GridSearchCV (5-fold CV)
+- Hyperparameter grid search including: n_neighbors, weights, algorithm, and distance metrics (p=1,2)
+
+---
+
 ## Technology Stack
 
 - **Language:** Python 3
@@ -266,7 +349,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
   - pandas - Data manipulation and analysis
   - NumPy - Numerical computing
   - Matplotlib & Seaborn - Data visualization
-  - Scikit-learn - Machine learning basics
+  - Scikit-learn - Machine learning algorithms (classification, regression, cross-validation)
   - pickle - Data serialization
 
 ---
@@ -283,6 +366,9 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 | Midterm | Employees, Foods, Food Nutrients | Variable | Comprehensive Assessment |
 | 7 | Food Consumption, Happiness, Businesses | 100-10,000 | Statistics |
 | 8 | Fish, Real Estate, Insurance, Stocks | 500-5,000 | Regression |
+| 9 | Churn, Diabetes, Music, Advertising, Sales | Variable | ML Classification |
+| 10 | Churn, Diabetes, Music, Advertising, Sales | Variable | Advanced ML |
+| 11 | Credit Card Approvals | Variable | Real-world ML Application |
 
 ---
 
@@ -329,7 +415,17 @@ By completing all assignments in this repository, students will be able to:
 - ✅ Apply statistical methods to validate findings
 - ✅ Conduct hypothesis testing and statistical inference
 - ✅ Build and evaluate regression models
+- ✅ Implement classification algorithms (K-Nearest Neighbors)
+- ✅ Apply cross-validation for robust model evaluation
+- ✅ Handle missing values and categorical features
+- ✅ Perform hyperparameter tuning and model optimization
 - ✅ Make predictions using machine learning techniques
+- ✅ Build real-world binary classification models (Logistic Regression, KNN)
+- ✅ Implement Elbow Method for optimal hyperparameter selection
+- ✅ Use GridSearchCV for comprehensive hyperparameter tuning
+- ✅ Compare model performance using accuracy metrics and confusion matrices
+- ✅ Feature scaling and normalization techniques
+- ✅ Evaluate classifier performance on test data
 
 ---
 
@@ -342,4 +438,4 @@ By completing all assignments in this repository, students will be able to:
 3
 ---
 
-*Last Updated: January 28, 2026*
+*Last Updated: February 16, 2026*

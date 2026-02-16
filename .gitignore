@@ -51,3 +51,4 @@ build/
 .agent/
 .github/
 .claude/
+CLAUDE.md
