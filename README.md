@@ -189,6 +189,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 - **Practice Files:**
   - `notebook.ipynb` - Additional statistical practice
   - `WorldOldestBusinesses.ipynb` - Case study on world's oldest businesses
+  - `final_practice_L7.ipynb` - Final examination practice exercises for statistics
 
 - **Datasets:**
   - `food_consumption.csv` - Global food consumption patterns
@@ -341,6 +342,48 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
+### Lecture 12: Unsupervised Machine Learning - K-Means Clustering
+**Topics:** Clustering algorithms, unsupervised learning, and pattern discovery
+
+- **Lecture File:**
+  - `6726077_SithuWinSan_L12.ipynb` - Main lecture assignment on K-Means clustering
+
+- **Datasets:**
+  - `points.csv` - Basic 2D point data for clustering fundamentals
+  - `new_points.csv` - New data points for cluster assignment prediction
+  - `fish.csv`, `fish.txt` - Fish market data for species clustering
+  - `seeds.csv`, `seeds-width-vs-length.csv` - Wheat seeds dataset for variety classification
+  - `wine.data`, `wine.txt` - Wine dataset from UCI Machine Learning Repository for cultivar clustering
+
+**Skills Covered:**
+- K-Means clustering algorithm fundamentals
+- Elbow Method for determining optimal number of clusters
+- Cluster assignment and new point prediction
+- Inertia (within-cluster sum of squares) minimization
+- Cross-validation with inertia for model evaluation
+- Feature scaling for clustering
+- High-dimensional data clustering
+- Visualizing clusters in 2D and 3D space
+- Hierarchical vs. flat clustering comparison
+- Real-world applications: customer segmentation, image compression, document clustering
+
+**Key Algorithms Implemented:**
+- K-Means with specified number of clusters (k)
+- Centroid initialization and convergence
+- Inertia calculation and evaluation
+- Elbow plot analysis for optimal k selection
+- Predicting cluster labels for new observations
+
+**Datasets Summary:**
+| Dataset | Dimensions | Clusters | Application |
+|---------|------------|----------|-------------|
+| points.csv | 2D | 3 | Basic clustering demo |
+| fish.csv | 6 features | 7 | Fish species classification |
+| seeds.csv | 7 features | 3 | Wheat variety identification |
+| wine.data | 13 features | 3 | Wine cultivar classification |
+
+---
+
 ## Technology Stack
 
 - **Language:** Python 3
@@ -369,6 +412,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 | 9 | Churn, Diabetes, Music, Advertising, Sales | Variable | ML Classification |
 | 10 | Churn, Diabetes, Music, Advertising, Sales | Variable | Advanced ML |
 | 11 | Credit Card Approvals | Variable | Real-world ML Application |
+| 12 | Points, Fish, Seeds, Wine | 150-1,000 | Unsupervised ML (K-Means Clustering) |
 
 ---
 
@@ -426,6 +470,13 @@ By completing all assignments in this repository, students will be able to:
 - ✅ Compare model performance using accuracy metrics and confusion matrices
 - ✅ Feature scaling and normalization techniques
 - ✅ Evaluate classifier performance on test data
+- ✅ Implement K-Means clustering algorithm
+- ✅ Determine optimal number of clusters using Elbow Method
+- ✅ Calculate and interpret inertia (within-cluster sum of squares)
+- ✅ Assign new data points to existing clusters
+- ✅ Visualize clusters in multi-dimensional space
+- ✅ Apply cross-validation for unsupervised learning evaluation
+- ✅ Handle high-dimensional data for clustering
 
 ---
 
@@ -438,4 +489,4 @@ By completing all assignments in this repository, students will be able to:
 3
 ---
 
-*Last Updated: February 16, 2026*
+*Last Updated: February 23, 2026*
