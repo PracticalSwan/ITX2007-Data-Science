@@ -1,4 +1,4 @@
-# Python Data Science Cheatsheet (Lectures 7-11)
+# Python Data Science Cheatsheet (Lectures 7-12)
 ## Exams Provide Step-by-Step Instructions - Use This as Reference
 
 ---
@@ -1377,6 +1377,207 @@ print("Best Accuracy:", grid.best_score_)
 
 ---
 
+## **LECTURE 12: K-MEANS CLUSTERING**
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+import os
+import warnings
+
+# Suppress KMeans warnings
+os.environ['OMP_NUM_THREADS'] = '1'
+warnings.filterwarnings('ignore', message='KMeans is known to have a memory leak')
+```
+
+---
+
+### **Basic K-Means Clustering**
+
+```python
+# Load iris dataset as example
+from sklearn.datasets import load_iris
+iris = load_iris()
+
+# Create KMeans model with 3 clusters
+model = KMeans(n_clusters=3, n_init='auto')
+model.fit(iris.data)
+
+# Get cluster labels
+labels = model.predict(iris.data)
+print(labels)
+
+# Predict new samples
+new_samples = np.array([[5.7, 4.4, 1.5, 0.4],
+                       [6.5, 3.0, 5.5, 1.8],
+                       [5.8, 2.7, 5.1, 1.9]])
+new_labels = model.predict(new_samples)
+print(new_labels)
+```
+
+### **Visualizing Clusters**
+
+```python
+# Scatter plot with cluster colors
+xs = iris.data[:, 0]  # sepal length
+ys = iris.data[:, 2]  # petal length
+plt.scatter(xs, ys, c=labels)
+plt.xlabel('Sepal Length')
+plt.ylabel('Petal Length')
+plt.show()
+
+# With centroids (cluster centers)
+centroids = model.cluster_centers_
+centroids_x = centroids[:, 0]
+centroids_y = centroids[:, 2]
+plt.scatter(xs, ys, c=labels, alpha=0.5)
+plt.scatter(centroids_x, centroids_y, marker='D', s=50)  # centroids as diamonds
+plt.show()
+```
+
+### **Finding Optimal k (Elbow Method)**
+
+```python
+# Load data
+pointsDF = pd.read_csv('points.csv', index_col=0)
+points = pointsDF.to_numpy()
+
+# Test k values from 1 to 9
+ks = range(1, 10)
+inertias = []
+
+for k in ks:
+    model = KMeans(n_clusters=k, n_init='auto')
+    model.fit(points)
+    inertias.append(model.inertia_)
+
+# Plot elbow curve
+plt.plot(ks, inertias, '-o')
+plt.xlabel('Number of clusters, k')
+plt.ylabel('Inertia')
+plt.xticks(ks)
+plt.show()
+
+# Choose k where inertia drop levels off (the "elbow")
+```
+
+### **Cross-Tabulation (Compare Clusters with True Labels)**
+
+```python
+# Create DataFrame with clusters and true labels
+df = pd.DataFrame({'labels': labels, 'varieties': varieties})
+
+# Create crosstab
+ct = pd.crosstab(df['labels'], df['varieties'])
+print(ct)
+
+# Example output:
+# varieties  Canadian wheat  Kama wheat  Rosa wheat
+# labels
+# 0                       0          63          10
+# 1                      69           5           1
+# 2                       0           2          59
+```
+
+### **Standardization with Pipeline**
+
+```python
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+
+# Load data
+fish = pd.read_csv('fish.csv', header=None)
+samples = fish.drop(0, axis=1)  # Drop species column
+
+# Create scaler and KMeans
+scaler = StandardScaler()
+kmeans = KMeans(n_clusters=4, n_init='auto')
+
+# Create pipeline
+pipeline = make_pipeline(scaler, kmeans)
+pipeline.fit(samples)
+
+# Get labels
+labels = pipeline.predict(samples)
+
+# Create crosstab to evaluate
+species = fish[0].tolist()
+df = pd.DataFrame({'labels': labels, 'species': species})
+ct = pd.crosstab(df['labels'], df['species'])
+print(ct)
+
+# Access cluster centers (scaled)
+centers = pipeline.named_steps['kmeans'].cluster_centers_
+print("\nCluster centers (scaled):")
+print(centers)
+```
+
+### **Complete Clustering Workflow**
+
+```python
+# 1. Load data
+seedsDF = pd.read_csv('seeds.csv')
+seeds = seedsDF.to_numpy()
+
+# 2. Find optimal k using elbow method
+ks = range(1, 10)
+inertias = []
+for k in ks:
+    model = KMeans(n_clusters=k, n_init='auto')
+    model.fit(seeds)
+    inertias.append(model.inertia_)
+
+plt.plot(ks, inertias, '-o')
+plt.xlabel('Number of clusters, k')
+plt.ylabel('Inertia')
+plt.xticks(ks)
+plt.show()
+
+# 3. Fit final model with chosen k
+model = KMeans(n_clusters=3, n_init='auto')
+labels = model.fit_predict(seeds)
+
+# 4. Visualize clusters
+xs = seeds[:, 0]  # area
+ys = seeds[:, 2]  # compactness
+plt.scatter(xs, ys, c=labels, alpha=0.5)
+
+# Add centroids
+centroids = model.cluster_centers_
+plt.scatter(centroids[:, 0], centroids[:, 2], marker='D', s=50)
+plt.xlabel('Area')
+plt.ylabel('Compactness')
+plt.show()
+
+# 5. Evaluate with crosstab (if true labels available)
+df = pd.DataFrame({'labels': labels, 'species': species_list})
+ct = pd.crosstab(df['labels'], df['species'])
+print(ct)
+```
+
+### **Key K-Means Concepts**
+
+- **n_clusters**: Number of clusters to create
+- **n_init='auto'**: Number of times algorithm runs with different centroids
+- **labels_**: Cluster labels for each point (after fit)
+- **cluster_centers_**: Coordinates of cluster centers
+- **inertia_**: Sum of squared distances to closest cluster center
+- **predict()**: Assign new samples to existing clusters
+- **fit_predict()**: Fit model and return labels in one step
+
+### **Important Notes**
+
+1. **Standardization**: Always scale features before clustering when variables have different units/scales
+2. **Choosing k**: Use the elbow method - look for where inertia decrease levels off
+3. **Evaluation**: Use crosstab with true labels to assess clustering quality
+4. **Reproducibility**: K-Means uses random initialization; set `random_state` for consistent results
+
+---
+
 ## **METRICS & EVALUATION**
 
 ### **Confusion Matrix**
@@ -1474,6 +1675,10 @@ print(cc_apps.corr(numeric_only=True))
 | Logistic Regression | `LogisticRegression()` |
 | Confusion Matrix | `confusion_matrix()` |
 | Classification Report | `classification_report()` |
+| K-Means Clustering | `KMeans()` |
+| Crosstab | `pd.crosstab()` |
+| Cluster Centers | `model.cluster_centers_` |
+| Inertia | `model.inertia_` |
 
 ---
 
@@ -1485,3 +1690,4 @@ print(cc_apps.corr(numeric_only=True))
 - Fit scalers on training data only, not on test data
 - Use fit_transform on training data, transform only on test data
 - For GridSearchCV, ensure you fit on training data and evaluate on test data separately
+- **For K-Means**: Always standardize features before clustering when variables have different scales (Lecture 12)

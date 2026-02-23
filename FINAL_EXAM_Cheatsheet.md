@@ -509,6 +509,163 @@ print(grid.best_score_)
 
 ---
 
+## **LECTURE 12: K-MEANS CLUSTERING**
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+import os
+import warnings
+
+# Suppress KMeans warnings
+os.environ['OMP_NUM_THREADS'] = '1'
+warnings.filterwarnings('ignore', message='KMeans is known to have a memory leak')
+```
+
+---
+
+### **Basic K-Means**
+
+```python
+# Load data
+from sklearn.datasets import load_iris
+iris = load_iris()
+
+# Create KMeans model with 3 clusters
+model = KMeans(n_clusters=3, n_init='auto')
+model.fit(iris.data)
+
+# Get cluster labels
+labels = model.predict(iris.data)
+print(labels)
+
+# Predict new samples
+new_samples = np.array([[5.7, 4.4, 1.5, 0.4],
+                       [6.5, 3.0, 5.5, 1.8],
+                       [5.8, 2.7, 5.1, 1.9]])
+new_labels = model.predict(new_samples)
+print(new_labels)
+```
+
+### **Visualizing Clusters**
+
+```python
+# Scatter plot with cluster colors
+xs = iris.data[:, 0]  # sepal length
+ys = iris.data[:, 2]  # petal length
+plt.scatter(xs, ys, c=labels)
+plt.xlabel('Sepal Length')
+plt.ylabel('Petal Length')
+plt.show()
+
+# With centroids
+centroids = model.cluster_centers_
+centroids_x = centroids[:, 0]
+centroids_y = centroids[:, 2]
+plt.scatter(xs, ys, c=labels, alpha=0.5)
+plt.scatter(centroids_x, centroids_y, marker='D', s=50)  # centroids as diamonds
+plt.show()
+```
+
+### **Finding Optimal k (Elbow Method)**
+
+```python
+# Test k values from 1 to 9
+ks = range(1, 10)
+inertias = []
+
+for k in ks:
+    model = KMeans(n_clusters=k, n_init='auto')
+    model.fit(data)
+    inertias.append(model.inertia_)
+
+# Plot elbow curve
+plt.plot(ks, inertias, '-o')
+plt.xlabel('Number of clusters (k)')
+plt.ylabel('Inertia')
+plt.xticks(ks)
+plt.show()
+
+# Choose k where inertia drop levels off (the "elbow")
+```
+
+### **Cross-Tabulation (Compare with True Labels)**
+
+```python
+# Create DataFrame with clusters and true labels
+df = pd.DataFrame({'labels': labels, 'varieties': true_varieties})
+
+# Create crosstab
+ct = pd.crosstab(df['labels'], df['varieties'])
+print(ct)
+```
+
+### **Standardization with Pipeline**
+
+```python
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+
+# Create scaler and KMeans
+scaler = StandardScaler()
+kmeans = KMeans(n_clusters=4, n_init='auto')
+
+# Create pipeline
+pipeline = make_pipeline(scaler, kmeans)
+pipeline.fit(samples)
+
+# Get labels
+labels = pipeline.predict(samples)
+
+# Access cluster centers (scaled)
+centers = pipeline.named_steps['kmeans'].cluster_centers_
+print(centers)
+```
+
+### **Clustering Workflow (Complete)**
+
+```python
+# 1. Load data
+df = pd.read_csv('data.csv', index_col=0)
+samples = df.drop('species_column', axis=1).to_numpy()
+
+# 2. Find optimal k
+ks = range(1, 10)
+inertias = []
+for k in ks:
+    model = KMeans(n_clusters=k, n_init='auto')
+    model.fit(samples)
+    inertias.append(model.inertia_)
+
+plt.plot(ks, inertias, '-o')
+plt.xlabel('Number of clusters, k')
+plt.ylabel('Inertia')
+plt.show()
+
+# 3. Fit final model
+model = KMeans(n_clusters=3, n_init='auto')
+labels = model.fit_predict(samples)
+
+# 4. Visualize
+xs = samples[:, 0]
+ys = samples[:, 2]
+plt.scatter(xs, ys, c=labels, alpha=0.5)
+centroids = model.cluster_centers_
+plt.scatter(centroids[:, 0], centroids[:, 2], marker='D', s=50)
+plt.show()
+
+# 5. Evaluate with crosstab
+df = pd.DataFrame({'labels': labels, 'species': species_list})
+ct = pd.crosstab(df['labels'], df['species'])
+print(ct)
+```
+
+---
+
 ## **QUICK REFERENCE TABLE**
 
 | Task | Function/Library |
@@ -535,6 +692,10 @@ print(grid.best_score_)
 | Grid Search | `GridSearchCV()` |
 | Confusion Matrix | `confusion_matrix()` |
 | Classification Report | `classification_report()` |
+| K-Means Clustering | `KMeans()` |
+| Crosstab | `pd.crosstab()` |
+| Cluster Centers | `model.cluster_centers_` |
+| Inertia | `model.inertia_` |
 
 ---
 
@@ -547,6 +708,7 @@ print(grid.best_score_)
 5. **Scalers**: `fit_transform()` on train, `transform()` only on test
 6. **GridSearchCV**: Fit on train data, evaluate on test separately
 7. **Pipelines**: Combine imputation, scaling, modeling
+8. **K-Means**: Always standardize features before clustering (Lecture 12)
 
 ---
 
