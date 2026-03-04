@@ -8,9 +8,33 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-## Repository Structure
+## Table of Contents
 
-### Lecture 2: Data Fundamentals
+1. [Repository Structure](#1-repository-structure)
+   1.1 [Lecture 2: Data Fundamentals](#11-lecture-2-data-fundamentals)
+   1.2 [Lecture 3: Exploratory Data Analysis - Part 1](#12-lecture-3-exploratory-data-analysis-eda-part-1)
+   1.3 [Lecture 4: Data Cleaning & Preprocessing](#13-lecture-4-data-cleaning-preprocessing)
+   1.4 [Lecture 5: Exploratory Data Analysis - Part 2](#14-lecture-5-exploratory-data-analysis-eda-part-2)
+   1.5 [Lecture 6: Data Joining & Merging](#15-lecture-6-data-joining-merging)
+   1.6 [Lecture 7: Introduction to Statistics](#16-lecture-7-introduction-to-statistics)
+   1.7 [Lecture 8: Regression Analysis](#17-lecture-8-regression-analysis)
+   1.8 [Lecture 9: Machine Learning - Classification](#18-lecture-9-machine-learning-classification)
+   1.9 [Lecture 10: Advanced Machine Learning](#19-lecture-10-advanced-machine-learning)
+   1.10 [Lecture 11: Machine Learning - Credit Card Prediction](#110-lecture-11-machine-learning-credit-card-prediction)
+   1.11 [Lecture 12: Unsupervised Machine Learning](#111-lecture-12-unsupervised-machine-learning)
+   1.12 [Midterm Examination Files](#112-midterm-examination-files)
+2. [Technology Stack](#2-technology-stack)
+3. [Dataset Overview](#3-dataset-overview)
+4. [File Naming Convention](#4-file-naming-convention)
+5. [How to Use This Repository](#5-how-to-use-this-repository)
+6. [Learning Outcomes](#6-learning-outcomes)
+7. [Notes](#7-notes)
+
+---
+
+## 1. Repository Structure
+
+### 1.1 Lecture 2: Data Fundamentals
 **Topics:** Introduction to data types, basic data manipulation, and visualization
 
 - **Lecture File:**
@@ -35,7 +59,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 3: Exploratory Data Analysis (EDA) - Part 1
+### 1.2 Lecture 3: Exploratory Data Analysis (EDA) - Part 1
 **Topics:** Data profiling, statistical analysis, and advanced visualization
 
 - **Lecture File:**
@@ -80,7 +104,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 4: Data Cleaning & Preprocessing
+### 1.3 Lecture 4: Data Cleaning & Preprocessing
 **Topics:** Data quality assessment, missing values, and data transformation
 
 - **Lecture File:**
@@ -113,7 +137,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 5: Exploratory Data Analysis (EDA) - Part 2
+### 1.4 Lecture 5: Exploratory Data Analysis (EDA) - Part 2
 **Topics:** Advanced EDA techniques and hypothesis testing
 
 - **Lecture File:**
@@ -137,7 +161,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 6: Data Joining & Merging
+### 1.5 Lecture 6: Data Joining & Merging
 **Topics:** Combining multiple data sources and relational data operations
 
 - **Lecture File:**
@@ -152,7 +176,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
   - **Movie Data:** `pop_movies.csv`, `actors_movies.csv`, `tmdb_movies.csv`, `toy_story.csv`
   - **Movie Metadata:** `tdmb_movie_to_genres.csv`, `tdmb_taglines.csv` (TMDB API data)
   - **Music Metadata:** `music_unclean.csv`
-  
+
 - **Economic & Geographic Data:**
   - `GDP.csv`, `GDP.txt` - GDP data
   - `inflation.csv`, `inflation.txt` - Inflation rates
@@ -180,7 +204,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 7: Introduction to Statistics
+### 1.6 Lecture 7: Introduction to Statistics
 **Topics:** Statistical foundations, probability distributions, and hypothesis testing
 
 - **Lecture File:**
@@ -208,11 +232,14 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 9: Machine Learning - Classification
+### 1.8 Lecture 9: Machine Learning - Classification
 **Topics:** K-Nearest Neighbors (KNN), classification algorithms, and model evaluation
 
 - **Lecture File:**
   - `6726077_SithuWinSan_L9.ipynb` - Main lecture assignment on classification with KNN
+
+- **Practice Files:**
+  - `final_practice_L9.ipynb` - Final examination practice exercises for classification
 
 - **Datasets:**
   - `churn_df.csv`, `churn_df.txt` - Customer churn classification data
@@ -233,11 +260,14 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 10: Advanced Machine Learning
+### 1.9 Lecture 10: Advanced Machine Learning
 **Topics:** Cross-validation, model tuning, advanced preprocessing, and model pipelines
 
 - **Lecture File:**
   - `6726077_SithuWinSan_L10.ipynb` - Main lecture assignment on advanced ML techniques
+
+- **Practice Files:**
+  - `final_practice_L10.ipynb` - Final examination practice exercises for advanced ML
 
 - **Datasets:**
   - `churn_df.csv`, `churn_df.txt` - Customer churn for advanced classification
@@ -260,11 +290,14 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 8: Regression Analysis
+### 1.7 Lecture 8: Regression Analysis
 **Topics:** Linear regression, multiple regression, and predictive modeling
 
 - **Lecture File:**
   - `6726077_SithuWinSan_L8.ipynb` - Main lecture assignment on regression techniques
+
+- **Practice Files:**
+  - `final_practice_L8.ipynb` - Final examination practice exercises for regression
 
 - **Datasets:**
   - `fish.csv` - Fish market data for regression analysis
@@ -286,7 +319,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Midterm Examination Files
+### 1.12 Midterm Examination Files
 **Topics:** Comprehensive assessment of data science fundamentals, EDA, and data preprocessing
 
 - **Midterm Notebooks:**
@@ -311,11 +344,14 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 11: Machine Learning - Credit Card Prediction
+### 1.10 Lecture 11: Machine Learning - Credit Card Prediction
 **Topics:** Credit card approval prediction, advanced preprocessing, hyperparameter tuning, and model comparison
 
 - **Lecture File:**
   - `6726077_SithuWinSan_L11.ipynb` - Main lecture assignment on credit card prediction
+
+- **Practice Files:**
+  - `final_practice_L11.ipynb` - Final examination practice exercises for credit card prediction
 
 - **Datasets:**
   - `cc_approvals.data` - Credit card approval application data
@@ -342,11 +378,14 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-### Lecture 12: Unsupervised Machine Learning - K-Means Clustering
+### 1.11 Lecture 12: Unsupervised Machine Learning - K-Means Clustering
 **Topics:** Clustering algorithms, unsupervised learning, and pattern discovery
 
 - **Lecture File:**
   - `6726077_SithuWinSan_L12.ipynb` - Main lecture assignment on K-Means clustering
+
+- **Practice Files:**
+  - `final_practice_L12.ipynb` - Final examination practice exercises for clustering
 
 - **Datasets:**
   - `points.csv` - Basic 2D point data for clustering fundamentals
@@ -384,7 +423,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-## Technology Stack
+## 2. Technology Stack
 
 - **Language:** Python 3
 - **Notebooks:** Jupyter Notebook
@@ -397,7 +436,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-## Dataset Overview
+## 3. Dataset Overview
 
 | Lecture | Primary Datasets | Record Count (Approximate) | Focus Area |
 |---------|------------------|---------------------------|-----------|
@@ -416,15 +455,16 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-## File Naming Convention
+## 4. File Naming Convention
 
 - **Main Assignments:** `6726077_SithuWinSan_L[X].ipynb` where X is the lecture number
-- **Practice Assignments:** `midterm_practice_L[X].ipynb`
-- **Specialty Assignments:** Named by topic (e.g., `netflix.ipynb`)
+- **Midterm Practice:** `midterm_practice_L[X].ipynb` for midterm preparation
+- **Final Practice:** `final_practice_L[X].ipynb` for final examination preparation
+- **Specialty Assignments:** Named by topic (e.g., `netflix.ipynb`, `WorldOldestBusinesses.ipynb`)
 
 ---
 
-## How to Use This Repository
+## 5. How to Use This Repository
 
 1. **Clone the repository:**
    ```bash
@@ -446,7 +486,7 @@ This repository contains all assignments and datasets for the **ITX2007 Data Sci
 
 ---
 
-## Learning Outcomes
+## 6. Learning Outcomes
 
 By completing all assignments in this repository, students will be able to:
 
@@ -480,13 +520,12 @@ By completing all assignments in this repository, students will be able to:
 
 ---
 
-## Notes
+## 7. Notes
 
 - All datasets are provided in CSV, pickle (`.p`), and text (`.txt`) formats for flexibility
 - Some notebooks include practice exercises from midterm preparation
 - Data sizes vary; some datasets (Netflix, airlines) are larger and may take time to process
 - Pickle files contain pre-processed data objects for advanced analyses
-3
 ---
 
-*Last Updated: February 23, 2026*
+*Last Updated: March 5, 2026*
