@@ -1,1693 +1,774 @@
 # Python Data Science Cheatsheet (Lectures 7-12)
-## Exams Provide Step-by-Step Instructions - Use This as Reference
 
----
+This reference is synced to the current repo state on **2026-04-04**.
 
-## **LECTURE 7: INTRODUCTION TO STATISTICS**
+It matches these notebooks and practice files:
 
-```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy.stats import uniform
-%matplotlib inline
-```
+- `Lecture7_Data Sets - Intro2Statistics/6726077_SithuWinSan_L7.ipynb`
+- `Lecture8 - Regression/6726077_SithuWinSan_L8.ipynb`
+- `Lecture9_DataSets - ML Part 1/6726077_SithuWinSan_L9.ipynb`
+- `Lecture10_DataSets - ML Part 1/6726077_SithuWinSan_L10.ipynb`
+- `Lecture11_DataSets - Credit Card Predictor/6726077_SithuWinSan_L11.ipynb`
+- `Lecture12_DataSets - Unsupervised ML/6726077_SithuWinSan_L12.ipynb`
+- `final_practice_L7.ipynb` to `final_practice_L12.ipynb`
+- `final_files/ITX2007_6726077_SithuWinSan_Final_2_2025_Q1.ipynb`
+- `final_files/ITX2007_6726077_SithuWinSan_Final_2_2025_Q2.ipynb`
 
----
+## Quick Map
 
-### **1. Descriptive Statistics**
+| Lecture | Main topic | Main notebook focus | Typical datasets |
+|---------|------------|---------------------|------------------|
+| 7 | Statistics | descriptive stats, sampling, inference | `food_consumption.csv`, `world_happiness.csv`, `amir_deals.csv` |
+| 8 | Regression | linear models with `statsmodels` | `fish.csv`, `taiwan_real_estate2.csv`, `ad_conversion.csv` |
+| 9 | KNN and train/test workflow | classification setup and evaluation | `churn_df.csv`, `diabetes.csv`, `sales_df.csv` |
+| 10 | Preprocessing and validation | imputation, encoding, pipelines, CV | `music.csv`, `music_unclean.csv`, `telecom_churn_clean.csv` |
+| 11 | Credit card prediction | split-then-preprocess, scaling, GridSearchCV | `cc_approvals.data` |
+| 12 | K-Means clustering | elbow method, crosstab, scaled clustering | `points.csv`, `new_points.csv`, `seeds.csv`, `wine.data`, `fish.csv` |
 
-#### **Mean & Median**
-```python
-# For a specific column or subset
-mean_val = df['column_name'].mean()
-median_val = df['column_name'].median()
-
-# For groups
-df.groupby('category')['column_name'].agg(['mean', 'median'])
-
-# Multiple aggregation with .agg()
-mean_median_consumption = df.groupby('category')['column'].agg(['mean', 'median'])
-print(mean_median_consumption)
-
-# Example from actual notebook:
-be_consumption = food_consumption[food_consumption['country'] == 'Belgium']
-usa_consumption = food_consumption[food_consumption['country'] == 'USA']
-print("Belgium - Mean:", be_consumption['consumption'].mean())
-print("USA - Median:", usa_consumption['consumption'].median())
-```
-
-#### **Quantiles**
-```python
-# Quartiles (0, 0.25, 0.5, 0.75, 1)
-np.quantile(df['column'], [0, 0.25, 0.5, 0.75, 1])
-
-# Quintiles
-np.quantile(df['column'], [0, 0.2, 0.4, 0.6, 0.8, 1])
-
-# Deciles
-np.quantile(df['column'], [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
-
-# Example from actual notebook:
-print(np.quantile(food_consumption['co2_emission'], [0,0.25,0.5,0.75,1]))
-print(np.quantile(food_consumption['co2_emission'], [0,0.2,0.4,0.6,0.8,1]))
-print(np.quantile(food_consumption['co2_emission'], [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]))
-```
-
-#### **Variance & Standard Deviation**
-```python
-# For a single column
-variance = df['column'].var()
-std_dev = df['column'].std()
-
-# For groups
-df.groupby('category')['column'].agg(['var', 'std'])
-
-# Example from actual notebook:
-print(food_consumption.groupby('food_category')['co2_emission'].agg(['var', 'std']))
-
-# Create histogram per category
-food_consumption[food_consumption['food_category'] == 'beef']['co2_emission'].hist()
-plt.show()
-```
-
-#### **Histograms**
-```python
-# Simple histogram
-df['column'].hist()
-plt.show()
-
-# Histogram with bins
-df['column'].hist(bins=10)
-plt.show()
-
-# Grouped histograms
-sns.displot(data=df, x='column', col='category', col_wrap=2, bins=9)
-plt.show()
-
-# Example from actual notebook:
-rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']
-rice_consumption['co2_emission'].hist()
-plt.show()
-print(rice_consumption['co2_emission'].agg(['mean', 'median']))
-```
-
----
-
-### **2. Outlier Detection (IQR Method)**
-
-```python
-# Calculate by group if needed
-grouped_data = df.groupby('category')['numeric_column'].sum()
-
-# Calculate quartiles and IQR
-q1 = np.quantile(grouped_data, 0.25)
-q3 = np.quantile(grouped_data, 0.75)
-iqr = q3 - q1
-
-# Calculate cutoffs
-lower = q1 - 1.5 * iqr
-upper = q3 + 1.5 * iqr
-
-# Find outliers
-outliers = grouped_data[(grouped_data < lower) | (grouped_data > upper)]
-print("Outliers:")
-print(outliers)
-
-# Find non-outliers
-non_outliers = grouped_data[(grouped_data >= lower) & (grouped_data <= upper)]
-
-# Example from actual notebook:
-emissions_by_country = food_consumption.groupby('country')['co2_emission'].sum()
-q1 = np.quantile(emissions_by_country, 0.25)
-q3 = np.quantile(emissions_by_country, 0.75)
-iqr = q3 - q1
-lower = q1 - 1.5 * iqr
-upper = q3 + 1.5 * iqr
-outliers = emissions_by_country[(emissions_by_country < lower) | (emissions_by_country > upper)]
-print(outliers)
-non_outliers = emissions_by_country[(emissions_by_country >= lower) | (emissions_by_country <= upper)]
-```
-
----
-
-### **3. Probability & Distributions**
-
-#### **Discrete Probability Distribution**
-```python
-# Count occurrences and calculate probabilities
-counts = df['category'].value_counts()
-probs = counts / df.shape[0]
-print(probs)
-
-# Example from actual notebook:
-amir_deals = pd.read_csv('amir_deals.csv')
-counts = amir_deals['product'].value_counts()
-probs = counts / amir_deals.shape[0]
-print(probs)
-```
-
-#### **Expected Value (for Discrete Distributions)**
-```python
-# Create probability distribution
-size_dist = df['column'].value_counts() / df.shape[0]
-size_dist = size_dist.reset_index()
-size_dist.columns = ['value', 'probability']
-
-# Calculate expected value
-expected_value = np.sum(size_dist['value'] * size_dist['probability'])
-print('The expected value is', expected_value)
-
-# Probability of condition
-prob_4_or_more = np.sum(size_dist[size_dist['value'] >= 4]['probability'])
-print('The probability is', prob_4_or_more)
-
-# Example from actual notebook:
-restaurant_groups = pd.read_csv('restaurant_groups.csv')
-size_dist = restaurant_groups['group_size'].value_counts() / restaurant_groups.shape[0]
-size_dist = size_dist.reset_index()
-size_dist.columns = ['group_size', 'prob']
-expected_value = np.sum(size_dist['group_size'] * size_dist['prob'])
-print('The expected value is', expected_value)
-groups_4_or_more = size_dist[size_dist['group_size'] >= 4]
-prob_4_or_more = np.sum(groups_4_or_more['prob'])
-print('The probability is ', prob_4_or_more)
-```
-
-#### **Continuous Uniform Distribution**
-```python
-min_time = 0
-max_time = 30
-
-# Probability less than X (min=0, max=30)
-prob_less_than_5 = uniform.cdf(5, 0, 30)
-print(prob_less_than_5)
-
-# Probability greater than X
-prob_greater_than_5 = 1 - uniform.cdf(5, 0, 30)
-print(prob_greater_than_5)
-
-# Probability between A and B
-prob_between_10_and_20 = uniform.cdf(20, 0, 30) - uniform.cdf(10, 0, 30)
-print(prob_between_10_and_20)
-```
-
----
-
-### **4. Sampling**
-
-```python
-# Set seed for reproducibility
-np.random.seed(24)
-
-# Sample without replacement
-sample_without_replacement = df.sample(5)
-print(sample_without_replacement)
-
-# Sample with replacement
-sample_with_replacement = df.sample(5, replace=True)
-print(sample_with_replacement)
-
-# Sampling distribution of mean
-np.random.seed(104)
-sample_means = []
-for i in range(100):
-    samp_20 = df['column'].sample(20, replace=True)
-    samp_20_mean = np.mean(samp_20)
-    sample_means.append(samp_20_mean)
-
-# Plot sampling distribution
-sample_means_series = pd.Series(sample_means)
-sample_means_series.hist()
-plt.show()
-```
-
----
-
-### **5. Correlation**
-
-```python
-# Scatterplot
-sns.scatterplot(x='col1', y='col2', data=df)
-plt.show()
-
-# Scatterplot with trendline
-sns.lmplot(x='col1', y='col2', data=df, ci=None)
-plt.show()
-
-# Calculate correlation coefficient
-correlation = df['col1'].corr(df['col2'])
-print(f"Correlation: {correlation}")
-
-# Example from actual notebook:
-world_happiness = pd.read_csv('world_happiness.csv')
-sns.scatterplot(x='life_exp', y='happiness_score', data=world_happiness)
-plt.show()
-sns.lmplot(x='life_exp', y='happiness_score', data=world_happiness, ci=None)
-plt.show()
-cor = world_happiness['life_exp'].corr(world_happiness['happiness_score'])
-print(cor)
-```
-
----
-
-### **6. Data Transformations**
-
-```python
-# Log transformation (for right-skewed data)
-df['log_column'] = np.log(df['numerical_column'])
-
-# Square root transformation
-df['sqrt_column'] = np.sqrt(df['numerical_column'])
-
-# Square/cube transformations
-df['squared'] = df['column'] ** 2
-df['cubed'] = df['column'] ** 3
-
-# Example from actual notebook - improving correlation with transformation:
-world_happiness['log_gdp_per_cap'] = np.log(world_happiness['gdp_per_cap'])
-sns.scatterplot(x='log_gdp_per_cap', y='happiness_score', data=world_happiness)
-plt.show()
-cor = world_happiness['log_gdp_per_cap'].corr(world_happiness['happiness_score'])
-print(cor)
-```
-
----
-
-## **LECTURE 8: REGRESSION**
+## Core Imports
 
 ```python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+from scipy import stats
 from statsmodels.formula.api import ols
-from sklearn.metrics import mean_squared_error
-```
 
----
-
-### **1. Visualizing Relationships**
-
-```python
-# Scatter plot
-sns.scatterplot(x='independent_var', y='dependent_var', data=df)
-plt.show()
-
-# Scatter plot with regression line
-sns.regplot(x='independent_var', y='dependent_var', data=df, ci=None)
-plt.show()
-
-# Scatter plot with transparency
-sns.regplot(x='independent_var', y='dependent_var', data=df,
-            ci=None, scatter_kws={'alpha': 0.5})
-plt.show()
-
-# Example from actual notebook:
-taiwan_real_estate = pd.read_csv('Taiwan_real_estate2.csv')
-sns.scatterplot(x='n_convenience', y='price_twd_msq', data=taiwan_real_estate)
-sns.regplot(x='n_convenience', y='price_twd_msq', data=taiwan_real_estate, ci=None, scatter_kws={'alpha':0.5})
-```
-
----
-
-### **2. Simple Linear Regression**
-
-```python
-# Create model: dependent ~ independent
-model = ols('dependent_var ~ independent_var', data=df)
-model_result = model.fit()
-
-# Print model parameters (intercept and slope)
-print(model_result.params)
-
-# Get model summary (R-squared, p-values, etc.)
-print(model_result.summary())
-
-# Example from actual notebook:
-swedish_motor_insurance = pd.read_csv('swedish_motor_insurance.csv')
-mdl_payment_vs_claims = ols('total_payment_sek ~ n_claims', data=swedish_motor_insurance)
-mdl_payment_vs_claims = mdl_payment_vs_claims.fit()
-print(mdl_payment_vs_claims.params)
-
-taiwan_real_estate = pd.read_csv('taiwan_real_estate2.csv')
-mdl_price_vs_conv = ols('price_twd_msq ~ n_convenience', data=taiwan_real_estate)
-mdl_price_vs_conv = mdl_price_vs_conv.fit()
-print(mdl_price_vs_conv.params)
-```
-
----
-
-### **3. Regression with Categorical Variables**
-
-```python
-# Numeric coding for categories (no intercept)
-model = ols('dependent_var ~ categorical_var + 0', data=df)
-model_result = model.fit()
-print(model_result.params)
-
-# With intercept (baseline category omitted)
-model = ols('dependent_var ~ categorical_var', data=df)
-model_result = model.fit()
-print(model_result.params)
-
-# Example from actual notebook:
-fish = pd.read_csv('fish.csv')
-mdl_mass_vs_species = ols('mass_g ~ species + 0', data=fish).fit()
-print(mdl_mass_vs_species.params)
-
-# Grouped histograms by species:
-sns.displot(data=fish, x='mass_g', col='species', col_wrap=2, bins=9)
-plt.show()
-```
-
----
-
-### **4. Making Predictions**
-
-```python
-# Create explanatory data
-explanatory_data = pd.DataFrame({'independent_var': np.arange(0, 11)})
-
-# Use model to predict
-predictions = model_result.predict(explanatory_data)
-
-# Create prediction dataframe
-prediction_data = explanatory_data.assign(
-    dependent_var = predictions
-)
-print(prediction_data)
-
-# Example from actual notebook:
-explanatory_data = pd.DataFrame({'n_convenience': np.arange(0, 11)})
-price_twd_msq = mdl_price_vs_conv.predict(explanatory_data)
-prediction_data = explanatory_data.assign(price_twd_msq = price_twd_msq)
-print(prediction_data)
-
-# Manual calculation using model parameters:
-coeffs = mdl_price_vs_conv.params
-intercept = coeffs[0]
-slope = coeffs[1]
-price_twd_msq = intercept + slope * explanatory_data
-print(price_twd_msq)
-```
-
----
-
-### **5. Non-Linear Relationships**
-
-#### **Cubic Transformation**
-```python
-# Add cubed variable
-df['var_cubed'] = df['var'] ** 3
-
-# Fit model with cubed variable
-model = ols('dependent_var ~ var_cubed', data=df)
-model_result = model.fit()
-print(model_result.params)
-
-# Predict with transformation
-explanatory_data = pd.DataFrame({
-    'var_cubed': np.arange(10, 41, 5) ** 3,
-    'var': np.arange(10, 41, 5)
-})
-predictions = model_result.predict(explanatory_data)
-
-# Example from actual notebook:
-perch = fish[fish['species'] == 'Perch']
-perch['length_cm_cubed'] = perch['length_cm'] ** 3
-mdl_perch = ols('mass_g ~ length_cm_cubed', data=perch).fit()
-print(mdl_perch.params)
-
-explanatory_data = pd.DataFrame({
-    'length_cm_cubed': np.arange(10, 41, 5) ** 3,
-    'length_cm': np.arange(10, 41, 5)
-})
-prediction_data = explanatory_data.assign(mass_g = mdl_perch.predict(explanatory_data))
-print(prediction_data)
-```
-
-#### **Square Root Transformation**
-```python
-# Add sqrt variable
-df['sqrt_var'] = np.sqrt(df['var'])
-
-# Fit model
-model = ols('dependent_var ~ sqrt_var', data=df)
-model_result = model.fit()
-print(model_result.params)
-
-# Example from actual notebook:
-taiwan_real_estate["sqrt_dist_to_mrt_m"] = np.sqrt(taiwan_real_estate["dist_to_mrt_m"])
-sns.regplot(x="sqrt_dist_to_mrt_m", y="price_twd_msq", data=taiwan_real_estate, ci=None)
-plt.show()
-
-mdl_price_vs_dist = ols("price_twd_msq ~ sqrt_dist_to_mrt_m", data=taiwan_real_estate).fit()
-print(mdl_price_vs_dist.params)
-
-explanatory_data = pd.DataFrame({
-    "sqrt_dist_to_mrt_m": np.sqrt(np.arange(0, 81, 10) ** 2),
-    "dist_to_mrt_m": np.arange(0, 81, 10) ** 2
-})
-prediction_data = explanatory_data.assign(
-    price_twd_msq = mdl_price_vs_dist.predict(explanatory_data)
-)
-print(prediction_data)
-```
-
-#### **Fourth Root Transformation (for ad clicks/impressions)**
-```python
-# Add qdrt (fourth root) variable
-df['qdrt_n_impressions'] = df['n_impressions'] ** 0.25
-df['qdrt_n_clicks'] = df['n_clicks'] ** 0.25
-
-# Fit model
-model = ols('qdrt_clicks ~ qdrt_impressions', data=df)
-model_result = model.fit()
-
-# Example from actual notebook:
-ad_conversion = pd.read_csv('ad_conversion.csv')
-ad_conversion['qdrt_n_impressions'] = ad_conversion['n_impressions'] ** 0.25
-ad_conversion['qdrt_n_clicks'] = ad_conversion['n_clicks'] ** 0.25
-
-sns.regplot(x='qdrt_n_impressions', y='qdrt_n_clicks', data=ad_conversion, ci=None)
-plt.show()
-
-mdl_click_vs_impression = ols('qdrt_n_clicks ~ qdrt_n_impressions', data=ad_conversion).fit()
-print(mdl_click_vs_impression.params)
-
-# Back-transform predictions:
-prediction_data['n_clicks'] = prediction_data['qdrt_n_clicks'] ** 4
-```
-
----
-
-### **6. Visualizing Predictions**
-
-```python
-# Plot original data
-sns.regplot(x='var', y='dependent_var', data=df, ci=None)
-
-# Overlay predictions
-if 'var_cubed' in explanatory_data.columns:
-    sns.scatterplot(data=prediction_data, x='var', y='dependent_var',
-                   color='red', marker='s')
-else:
-    sns.scatterplot(data=prediction_data, x='var', y='dependent_var',
-                   color='red', marker='s')
-plt.show()
-
-# Example from actual notebook:
-fig = plt.figure()
-sns.regplot(x='length_cm_cubed', y='mass_g', data=perch, ci=None)
-sns.scatterplot(data=prediction_data, x='length_cm_cubed', y='mass_g', color='red', marker='s')
-plt.show()
-```
-
----
-
-### **7. Model Evaluation Metrics**
-
-```python
-# Get model summary
-print(model_result.summary())
-
-# Extract R-squared
-r_squared = model_result.rsquared
-print(f"R-squared: {r_squared}")
-
-# Extract RSE (Residual Standard Error)
-rse = np.sqrt(model_result.mse_resid)
-print(f"RSE: {rse}")
-
-# Example from actual notebook:
-print(mdl_click_vs_impression.summary())
-r_squared = mdl_click_vs_impression.rsquared
-rse = np.sqrt(mdl_click_vs_impression.mse_resid)
-print(f"\n--- Interpretation ---")
-print(f"R-squared: {r_squared}")
-print(f"RSE: {rse}")
-print("Back-transformed errors vary with click magnitude")
-```
-
----
-
-## **LECTURE 9: K-NEAREST NEIGHBORS (KNN)**
-
-```python
-import pandas as pd
-import numpy as np
+from sklearn.model_selection import train_test_split, KFold, cross_val_score, GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import train_test_split
-import matplotlib.pyplot as plt
-```
-
----
-
-### **1. Basic KNN Setup**
-
-```python
-
-# Load data
-df = pd.read_csv('data.csv')
-
-# Select features and target
-X = df[['feature1', 'feature2']].values
-y = df['target'].values
-
-# Create and fit KNN
-knn = KNeighborsClassifier(n_neighbors=6)
-knn.fit(X, y)
-
-# Example from actual notebook:
-churn_df = pd.read_csv("churn_df.csv")
-X = churn_df[["account_length", "customer_service_calls"]].values
-y = churn_df["churn"].values
-knn = KNeighborsClassifier(n_neighbors=6)
-knn.fit(X, y)
-```
-
----
-
-### **2. Making Predictions with KNN**
-
-```python
-# New data to predict
-X_new = np.array([[val1, val2],
-                  [val3, val4],
-                  [val5, val6]])
-
-# Make predictions
-y_pred = knn.predict(X_new)
-print("Predictions:", y_pred)
-
-# Example from actual notebook:
-X_new = np.array([[30.0, 17.5],
-                  [107.0, 24.1],
-                  [213.0, 10.9]])
-y_pred = knn.predict(X_new)
-print("Predictions:", y_pred)
-```
-
----
-
-### **3. Train/Test Split**
-
-```python
-# Split with stratification
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y,
-    test_size=0.3,  # 30% for testing
-    random_state=21,  # For reproducibility
-    stratify=y       # Maintain class proportions
-)
-
-# Fit on training data
-knn = KNeighborsClassifier(n_neighbors=2)
-knn.fit(X_train, y_train)
-
-# Evaluate on test data
-accuracy = knn.score(X_test, y_test)
-print(f"Accuracy: {accuracy}")
-
-# Example from actual notebook:
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,
-                                                   random_state=21,
-                                                   stratify=y)
-knn = KNeighborsClassifier(n_neighbors=2)
-knn.fit(X_train, y_train)
-print(knn.score(X_test, y_test))
-```
-
----
-
-### **4. Finding Optimal k**
-
-```python
-neighbors = np.arange(1, 26)
-train_accuracies = {}
-test_accuracies = {}
-
-for neighbor in neighbors:
-    knn = KNeighborsClassifier(n_neighbors=neighbor)
-    knn.fit(X_train, y_train)
-
-    train_accuracies[neighbor] = knn.score(X_train, y_train)
-    test_accuracies[neighbor] = knn.score(X_test, y_test)
-
-# Plot results
-plt.figure(figsize=(8, 6))
-plt.title('KNN: Varying Number of Neighbors')
-plt.plot(neighbors, list(train_accuracies.values()), label='Training Accuracy')
-plt.plot(neighbors, list(test_accuracies.values()), label='Testing Accuracy')
-plt.legend()
-plt.xlabel('Number of Neighbors')
-plt.ylabel('Accuracy')
-plt.show()
-
-# Find best k
-best_k = max(test_accuracies, key=test_accuracies.get)
-print(f"Best k: {best_k}")
-
-# Example from actual notebook:
-neighbors = np.arange(1, 26)
-train_accuracies = {}
-test_accuracies = {}
-
-for neighbor in neighbors:
-    knn = KNeighborsClassifier(n_neighbors=neighbor)
-    knn.fit(X_train, y_train)
-    train_accuracies[neighbor] = knn.score(X_train, y_train)
-    test_accuracies[neighbor] = knn.score(X_test, y_test)
-
-plt.figure(figsize=(8, 6))
-plt.title('KNN: Varying Number of Neighbors')
-plt.plot(neighbors, list(train_accuracies.values()), label='Training Accuracy')
-plt.plot(neighbors, list(test_accuracies.values()), label='Testing Accuracy')
-plt.legend()
-plt.xlabel('Number of Neighbors')
-plt.ylabel('Accuracy')
-plt.show()
-```
-
----
-
-### **5. Using All Features**
-
-```python
-# Drop target column
-X = df.drop('target_column', axis=1).values
-y = df['target_column'].values
-
-# Check shapes
-print(X.shape, y.shape)
-
-# Train/test split
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
-
-# Fit model
-knn = KNeighborsClassifier(n_neighbors=5)
-knn.fit(X_train, y_train)
-
-# Evaluate
-print(f"Accuracy: {knn.score(X_test, y_test)}")
-
-# Example from actual notebook:
-X = churn_df.drop("churn", axis=1).values
-y = churn_df["churn"].values
-print(X.shape, y.shape)
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-knn = KNeighborsClassifier(n_neighbors=5)
-knn.fit(X_train, y_train)
-print(knn.score(X_test, y_test))
-```
-
----
-
-## **LECTURE 10: ADVANCED ML TECHNIQUES**
-
-```python
-from sklearn.model_selection import KFold, cross_val_score, train_test_split
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import LabelEncoder, StandardScaler, MinMaxScaler
-from sklearn.pipeline import Pipeline
-from sklearn.metrics import mean_squared_error, confusion_matrix, accuracy_score, classification_report
-import numpy as np
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler, StandardScaler
+from sklearn.pipeline import Pipeline, make_pipeline
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix,
+    mean_squared_error,
+)
+from sklearn.cluster import KMeans
 ```
 
----
+## Lecture 7: Statistics
 
-### **1. Cross-Validation**
+### Load and inspect
 
 ```python
-# Define K-Fold
-kf = KFold(n_splits=5, shuffle=True, random_state=42)
+df = pd.read_csv("food_consumption.csv")
+print(df.head())
+print(df.info())
+print(df.describe())
+```
 
-# Create model
-model = LinearRegression()
+### Descriptive statistics
 
-# Perform cross-validation
-cv_scores = cross_val_score(
-    model, X_train, y_train,
-    cv=kf,
-    scoring='neg_mean_squared_error'
+```python
+df["co2_emission"].mean()
+df["co2_emission"].median()
+df["co2_emission"].quantile([0, 0.25, 0.5, 0.75, 1.0])
+df["co2_emission"].var()
+df["co2_emission"].std()
+```
+
+### Grouped summaries
+
+```python
+df.groupby("food_category")["co2_emission"].agg(["mean", "median", "min", "max"])
+df.groupby("food_category")["co2_emission"].quantile([0.25, 0.5, 0.75])
+```
+
+### Histograms
+
+```python
+df["co2_emission"].hist(bins=20)
+plt.xlabel("CO2 emission")
+plt.ylabel("Frequency")
+plt.show()
+
+sns.histplot(data=df, x="co2_emission", hue="food_category", bins=20, kde=False)
+plt.show()
+```
+
+### IQR outlier detection
+
+```python
+q1 = df["co2_emission"].quantile(0.25)
+q3 = df["co2_emission"].quantile(0.75)
+iqr = q3 - q1
+
+lower = q1 - 1.5 * iqr
+upper = q3 + 1.5 * iqr
+
+outliers = df[(df["co2_emission"] < lower) | (df["co2_emission"] > upper)]
+clean_df = df[(df["co2_emission"] >= lower) & (df["co2_emission"] <= upper)]
+```
+
+### Probability distributions
+
+```python
+sales_counts = amir_deals["num_users"].value_counts(normalize=True).sort_index()
+expected_value = (sales_counts.index * sales_counts.values).sum()
+```
+
+```python
+from scipy.stats import uniform
+
+uniform.cdf(7, loc=0, scale=30)
+1 - uniform.cdf(7, loc=0, scale=30)
+uniform.cdf(18, loc=0, scale=30) - uniform.cdf(10, loc=0, scale=30)
+```
+
+### Sampling
+
+```python
+np.random.seed(42)
+sample = df.sample(n=10, replace=False)
+boot = df.sample(frac=1, replace=True)
+```
+
+### Correlation and scatter plots
+
+```python
+sns.scatterplot(data=world_happiness, x="gdp_per_cap", y="life_ladder")
+plt.show()
+
+sns.regplot(data=world_happiness, x="gdp_per_cap", y="life_ladder")
+plt.show()
+
+world_happiness["gdp_per_cap"].corr(world_happiness["life_ladder"])
+```
+
+### Transformations
+
+```python
+df["log_col"] = np.log(df["value"])
+df["sqrt_col"] = np.sqrt(df["value"])
+df["square_col"] = df["value"] ** 2
+df["cube_col"] = df["value"] ** 3
+```
+
+Use `np.log1p()` or add a constant if zeros are present.
+
+### Lecture 7 reminders
+
+- Use grouped summaries when the question compares categories.
+- Use `replace=True` only for bootstrap-style resampling.
+- Use IQR bounds on the column you are judging, not the full dataframe.
+- Always label axes on plots.
+
+## Lecture 8: Regression
+
+### Load regression data
+
+```python
+fish = pd.read_csv("fish.csv")
+real_estate = pd.read_csv("taiwan_real_estate2.csv")
+ads = pd.read_csv("ad_conversion.csv")
+```
+
+### Visualize relationships
+
+```python
+sns.scatterplot(data=fish, x="length_cm", y="mass_g", hue="species")
+plt.show()
+
+sns.regplot(data=fish, x="length_cm", y="mass_g", scatter_kws={"alpha": 0.6})
+plt.show()
+```
+
+### Simple linear regression with `statsmodels`
+
+```python
+mdl_mass_vs_length = ols("mass_g ~ length_cm", data=fish).fit()
+print(mdl_mass_vs_length.params)
+print(mdl_mass_vs_length.summary())
+```
+
+### Regression with categorical variables
+
+```python
+mdl_mass_vs_species = ols("mass_g ~ species", data=fish).fit()
+print(mdl_mass_vs_species.summary())
+```
+
+### Predictions
+
+```python
+explanatory_data = pd.DataFrame({"length_cm": np.arange(10, 60, 5)})
+prediction_data = explanatory_data.assign(
+    mass_g=mdl_mass_vs_length.predict(explanatory_data)
+)
+print(prediction_data)
+```
+
+### Non-linear transformations
+
+```python
+fish["length_cubed"] = fish["length_cm"] ** 3
+mdl_mass_vs_length_cubed = ols("mass_g ~ length_cubed", data=fish).fit()
+```
+
+```python
+ads["sqrt_n_impressions"] = np.sqrt(ads["n_impressions"])
+mdl_click_vs_sqrt_impression = ols("n_clicks ~ sqrt_n_impressions", data=ads).fit()
+```
+
+```python
+ads["qdrt_n_impressions"] = ads["n_impressions"] ** 0.25
+mdl_click_vs_qdrt_impression = ols("n_clicks ~ qdrt_n_impressions", data=ads).fit()
+```
+
+### Back-transform predictions
+
+```python
+pred = mdl_click_vs_qdrt_impression.predict(explanatory_data)
+pred_original_scale = pred ** 4
+```
+
+### Plot predictions
+
+```python
+plt.scatter(fish["length_cm"], fish["mass_g"], alpha=0.6)
+plt.plot(
+    explanatory_data["length_cm"],
+    prediction_data["mass_g"],
+    color="red",
+)
+plt.show()
+```
+
+### Regression evaluation
+
+```python
+print(mdl_mass_vs_length.rsquared)
+print(np.sqrt(mdl_mass_vs_length.mse_resid))
+```
+
+### Lecture 8 reminders
+
+- `ols("y ~ x", data=df)` uses a formula string.
+- Use `model.summary()` for coefficients, p-values, and R-squared.
+- Transform the explanatory variable first, then fit on the transformed feature.
+- Back-transform predictions if the question wants the original unit.
+
+## Lecture 9: KNN and train/test workflow
+
+### Basic KNN
+
+```python
+churn = pd.read_csv("churn_df.csv")
+X = churn[["account_length", "customer_service_calls"]]
+y = churn["churn"]
+
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X, y)
+```
+
+### Predict new rows
+
+```python
+X_new = np.array([[12, 1], [45, 3], [180, 0]])
+predictions = knn.predict(X_new)
+print(predictions)
+```
+
+### Train/test split
+
+```python
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.3,
+    random_state=42,
+    stratify=y,
 )
 
-# RMSE of each fold
-rmse_scores = np.sqrt(-cv_scores)
-print(f"RMSE scores: {rmse_scores}")
-print(f"Mean RMSE: {rmse_scores.mean()}")
+knn = KNeighborsClassifier(n_neighbors=6)
+knn.fit(X_train, y_train)
+print(knn.score(X_test, y_test))
+```
 
-# Example from actual notebook:
-sales_df = pd.read_csv('sales_df.csv', index_col=0)
-X = sales_df.drop(["tv","sales"], axis=1).values
-y = sales_df["sales"].values
+### Search for best `k`
+
+```python
+scores = {}
+
+for k in range(1, 21):
+    model = KNeighborsClassifier(n_neighbors=k)
+    model.fit(X_train, y_train)
+    scores[k] = model.score(X_test, y_test)
+
+best_k = max(scores, key=scores.get)
+best_score = scores[best_k]
+print(best_k, best_score)
+```
+
+### Plot score by `k`
+
+```python
+plt.plot(list(scores.keys()), list(scores.values()), marker="o")
+plt.xlabel("k")
+plt.ylabel("Accuracy")
+plt.xticks(range(1, 21))
+plt.show()
+```
+
+### Use more features
+
+```python
+X = churn.drop("churn", axis=1)
+y = churn["churn"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.3,
+    random_state=42,
+    stratify=y,
+)
+
+knn = KNeighborsClassifier(n_neighbors=7)
+knn.fit(X_train, y_train)
+print(knn.score(X_test, y_test))
+```
+
+### Lecture 9 reminders
+
+- Use `stratify=y` for classification.
+- Keep `X` as a DataFrame when selecting multiple features.
+- Use `.score()` for a quick accuracy check.
+- Search across `k` values instead of guessing one.
+
+## Lecture 10: Preprocessing, validation, and pipelines
+
+### Cross-validation
+
+```python
+X = sales_df[["TV", "radio", "social_media"]]
+y = sales_df["sales"]
 
 kf = KFold(n_splits=6, shuffle=True, random_state=5)
 reg = LinearRegression()
+
 cv_scores = cross_val_score(reg, X, y, cv=kf)
-
-print(f'CV scores: {cv_scores}')
-print(f'Mean: {np.mean(cv_scores)}')
-print(f'STD: {np.std(cv_scores)}')
-print(f'Confidence interval: {np.quantile(cv_scores, [0.025, 0.975])}')
+print(cv_scores)
+print(cv_scores.mean())
+print(cv_scores.std())
 ```
 
----
-
-### **2. Handling Missing Values**
+### Missing-value imputation
 
 ```python
-from sklearn.impute import SimpleImputer
-
-# For categorical data
-imp_cat = SimpleImputer(strategy="most_frequent")
-X_train_cat = imp_cat.fit_transform(X_train_cat)
-X_test_cat = imp_cat.transform(X_test_cat)
-
-# For numerical data (default: mean)
-imp_num = SimpleImputer()
-X_train_num = imp_num.fit_transform(X_train_num)
-X_test_num = imp_num.transform(X_test_num)
-
-# Other strategies: 'median', 'most_frequent', 'constant'
-
-# Example from actual notebook:
-X_cat = music_df["genre"].values.reshape(-1, 1)
-X_num = music_df.drop(["genre", "popularity"], axis=1).values
+imp_num = SimpleImputer(strategy="mean")
+X_num = imp_num.fit_transform(X_num)
 
 imp_cat = SimpleImputer(strategy="most_frequent")
-X_train_cat = imp_cat.fit_transform(X_train_cat)
-X_test_cat = imp_cat.transform(X_test_cat)
-
-imp_num = SimpleImputer()
-X_train_num = imp_num.fit_transform(X_train_num)
-X_test_num = imp_num.transform(X_test_num)
+X_cat = imp_cat.fit_transform(X_cat)
 ```
 
----
+### Label encoding
 
-### **3. Encoding Categorical Variables**
-
-#### **Label Encoding**
 ```python
-from sklearn.preprocessing import LabelEncoder
-
-le = LabelEncoder()
-X_train_cat = le.fit_transform(X_train_cat)
-X_test_cat = le.transform(X_test_cat)
-
-# Reshape if needed
-X_train_cat = X_train_cat.reshape(-1, 1)
-X_test_cat = X_test_cat.reshape(-1, 1)
-
-# Example from actual notebook:
-le = LabelEncoder()
-X_train_cat = le.fit_transform(X_train_cat)
-X_test_cat = le.transform(X_test_cat)
-X_train_cat = X_train_cat.reshape(-1, 1)
-X_test_cat = X_test_cat.reshape(-1, 1)
+encoder = LabelEncoder()
+music["genre_label"] = encoder.fit_transform(music["genre"])
 ```
 
-#### **One-Hot Encoding**
+### One-hot encoding
+
 ```python
-# For pandas DataFrame
-df_dummies = pd.get_dummies(df['column'], drop_first=True)
-
-# Concat to original dataframe
-df_final = pd.concat([df, df_dummies], axis=1)
-df_final = df_final.drop('column', axis=1)
-
-# Example from actual notebook:
-music_dummies = pd.get_dummies(music_df['genre'], drop_first=True)
-music_dummies = pd.concat([music_df, music_dummies], axis=1)
-music_dummies = music_dummies.drop('genre', axis=1)
+music_dummies = pd.get_dummies(music, columns=["genre"], drop_first=True)
 ```
 
----
-
-### **4. Combining Preprocessed Data**
+### Combine arrays manually
 
 ```python
-# Combine numerical and categorical features
-X_train = np.append(X_train_num, X_train_cat, axis=1)
-X_test = np.append(X_test_num, X_test_cat, axis=1)
-
-print(X_train.shape, X_test.shape)
-
-# Example from actual notebook:
 X_train = np.append(X_train_num, X_train_cat, axis=1)
 X_test = np.append(X_test_num, X_test_cat, axis=1)
 ```
 
----
-
-### **5. Using Pipelines**
+### Build a pipeline
 
 ```python
-# Define pipeline steps
 steps = [
-    ('imputer', SimpleImputer()),
-    ('scaler', StandardScaler()),
-    ('classifier', LogisticRegression())
+    ("imputer", SimpleImputer()),
+    ("scaler", StandardScaler()),
+    ("classifier", LogisticRegression(max_iter=100000)),
 ]
 
-# Create pipeline
-pipeline = Pipeline(steps)
-
-# Fit and predict
-pipeline.fit(X_train, y_train)
-y_pred = pipeline.predict(X_test)
-print(f"Accuracy: {pipeline.score(X_test, y_test)}")
-
-# Example from actual notebook:
-steps = [('imputation', SimpleImputer()),
-         ('Log_reg', LogisticRegression(max_iter=100000))]
 pipeline = Pipeline(steps)
 pipeline.fit(X_train, y_train)
 y_pred = pipeline.predict(X_test)
 print(pipeline.score(X_test, y_test))
 ```
 
----
-
-### **6. Linear Regression for Prediction**
+### Evaluate classification models
 
 ```python
-# Create model
-reg = LinearRegression()
-
-# Fit to data (X must be 2D)
-X = X.reshape(-1, 1)
-reg.fit(X, y)
-
-# Make predictions
-predictions = reg.predict(X)
-
-# Get coefficients
-print(f"Intercept: {reg.intercept_}")
-print(f"Coefficients: {reg.coef_}")
-
-# Example from actual notebook:
-sales_df = pd.read_csv('sales_df.csv', index_col=0)
-X = sales_df["radio"].values
-y = sales_df["sales"].values
-X = X.reshape(-1, 1)
-
-reg = LinearRegression()
-reg.fit(X, y)
-predictions = reg.predict(X)
-
-plt.scatter(X, y, color="blue")
-plt.plot(X, predictions, color="red")
-plt.xlabel("Radio Expenditure ($)")
-plt.ylabel("Sales ($)")
-plt.show()
+print(confusion_matrix(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+print(accuracy_score(y_test, y_pred))
 ```
 
----
-
-### **7. Model Evaluation Metrics**
+### Evaluate regression models
 
 ```python
-# R-squared
-r_squared = reg.score(X_test, y_test)
-print(f"R^2: {r_squared}")
-
-# RMSE
-y_pred = reg.predict(X_test)
-rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-print(f"RMSE: {rmse}")
-
-# Example from actual notebook:
-sales_df = pd.read_csv('sales_df.csv', index_col=0)
-X = sales_df.drop("sales", axis=1).values
-y = sales_df["sales"].values
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
 reg = LinearRegression()
 reg.fit(X_train, y_train)
 y_pred = reg.predict(X_test)
-
-r_squared = reg.score(X_test, y_test)
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-print("R^2: {}".format(r_squared))
-print("RMSE: {}".format(rmse))
+print(rmse)
 ```
 
----
+### Lecture 10 reminders
 
-## **LECTURE 11: COMPLETE ML PIPELINE (CREDIT CARD PREDICTOR)**
+- Use CV for a more stable performance estimate.
+- Impute before scaling.
+- `LabelEncoder` is for label-like categorical values, not full multi-column feature frames.
+- Pipelines help keep preprocessing and modeling together.
 
-```python
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.preprocessing import MinMaxScaler, LabelEncoder
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix, accuracy_score
-import matplotlib.pyplot as plt
-import warnings
-warnings.filterwarnings('ignore')
-```
+## Lecture 11: Credit card prediction pipeline
 
----
-
-### **1. Data Loading & Initial Exploration**
+### Load `cc_approvals.data`
 
 ```python
-
-# Load data without headers if needed
-df = pd.read_csv('data.csv', header=None)
-
-# Explore data
-print(df.head())
-print(df.describe())
-print(df.info())
-print(df.tail())
-
-# Example from actual notebook:
 cc_apps = pd.read_csv("cc_approvals.data", header=None)
-cc_apps.head()
-
+print(cc_apps.head())
 print(cc_apps.describe())
-print('\n')
 print(cc_apps.info())
-print('\n')
-cc_apps.tail(17)
 ```
 
----
-
-### **2. Missing Value Handling**
+### Replace placeholders and inspect missing values
 
 ```python
-# Replace '?' or other placeholders with NaN
-df = df.replace('?', np.nan)
-
-# Check missing values
-print(df.isna().sum())
-
-# Impute numeric columns with mean
-df.loc[[row_indices]] = df.loc[[row_indices]].fillna(
-    df.mean(numeric_only=True)
-)
-
-# Impute categorical columns with mode
-for col in df.columns:
-    if df[col].dtypes == 'object':
-        df = df.fillna(df[col].value_counts().index[0])
-
-# Verify no missing values
-print(df.isna().sum())
-
-# Example from actual notebook:
-cc_apps = cc_apps.replace('?', np.nan)
-cc_apps.loc[[2,7,10,14]] = cc_apps.loc[[2,7,10,14]].fillna(
-    cc_apps.mean(numeric_only=True))
-print(cc_apps.isna().sum())
-
-for col in cc_apps.columns:
-    if cc_apps[col].dtypes == 'object':
-        cc_apps = cc_apps.fillna(cc_apps[col].value_counts().index[0])
+cc_apps = cc_apps.replace("?", np.nan)
 print(cc_apps.isna().sum())
 ```
 
----
-
-### **3. Label Encoding for Categorical Data**
+### Split before preprocessing
 
 ```python
-# Encode each object column
-for col in df.columns:
-    if df[col].dtypes == 'object':
-        df[col] = le.fit_transform(df[col])
-
-# Example from actual notebook:
-le = LabelEncoder()
-for col in list(cc_apps):
-    if cc_apps[col].dtypes=='object':
-        cc_apps[col]=le.fit_transform(cc_apps[col])
-```
-
----
-
-### **4. Train/Test Split (Before Preprocessing - INCORRECT APPROACH)**
-
-⚠️ **Note:** This approach fits on test data (data leakage). See proper approach below.
-
-```python
-# Drop unnecessary features
-df = df.drop([col11, col13], axis=1)
-
-# Convert to numpy array
-data = df.values
-
-# Separate features and target
-X, y = data[:, 0:12], data[:, 13]
-
-# Split
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y,
-    test_size=0.33,
-    random_state=42
-)
-
-print(X_train.shape, y_train.shape)
-print(X_test.shape, y_test.shape)
-
-# Example from actual notebook:
-cc_apps = cc_apps.drop([11,13], axis=1)
-cc_apps = cc_apps.values
-X, y = cc_apps[:,0:12], cc_apps[:,13]
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
-print(X_train.shape, y_train.shape)
-print(X_test.shape, y_test.shape)
-```
-
----
-
-### **5. Proper Split-Then-Preprocess Approach (CORRECT)**
-
-```python
-# Split BEFORE preprocessing
 train_df, test_df = train_test_split(
-    df, test_size=0.33, random_state=42
+    cc_apps,
+    test_size=0.33,
+    random_state=42,
 )
+```
 
-# Handle missing on train and test separately
-train_df = train_df.replace('?', np.nan)
-test_df = test_df.replace('?', np.nan)
+### Impute train and test safely
 
-# Impute using TRAIN statistics
-test_df.fillna(train_df.mean(numeric_only=True), inplace=True)
+```python
+train_df = train_df.replace("?", np.nan)
+test_df = test_df.replace("?", np.nan)
+
 train_df.fillna(train_df.mean(numeric_only=True), inplace=True)
+test_df.fillna(train_df.mean(numeric_only=True), inplace=True)
 
-# Verify
-print(train_df.isnull().sum())
-print(test_df.isnull().sum())
-
-# Example from actual notebook:
-cc_apps_train, cc_apps_test = train_test_split(cc_apps, test_size=0.33, random_state=42)
-cc_apps_train = cc_apps_train.replace('?', np.nan)
-cc_apps_test = cc_apps_test.replace('?', np.nan)
-
-cc_apps_train.fillna(cc_apps_train.mean(numeric_only=True), inplace=True)
-cc_apps_test.fillna(cc_apps_train.mean(numeric_only=True), inplace=True)
-
-print(cc_apps_train.isnull().sum())
-print(cc_apps_test.isnull().sum())
+for col in train_df.columns:
+    if train_df[col].dtype == "object":
+        mode_val = train_df[col].mode(dropna=True)[0]
+        train_df[col] = train_df[col].fillna(mode_val)
+        test_df[col] = test_df[col].fillna(mode_val)
 ```
 
----
-
-### **6. One-Hot Encoding**
+### One-hot encode and align columns
 
 ```python
-# Convert categorical to dummies
 train_df = pd.get_dummies(train_df, dtype=int)
-test_df = pd.get_dummies(test_df)
+test_df = pd.get_dummies(test_df, dtype=int)
 
-# Align test columns with train
 test_df = test_df.reindex(columns=train_df.columns, fill_value=0)
-
-print(train_df.columns)
-
-# Example from actual notebook:
-cc_apps_train = pd.get_dummies(cc_apps_train)  # try with argument dtype = int
-cc_apps_test = pd.get_dummies(cc_apps_test)
-
-# Reindex columns of test set aligning with train set
-cc_apps_test = cc_apps_test.reindex(columns=cc_apps_train.columns, fill_value=0)
-print(cc_apps_train)
 ```
 
----
-
-### **7. Feature Scaling (MinMaxScaler)**
+### Separate features and labels
 
 ```python
-# Separate features and labels
 X_train = train_df.iloc[:, :-1].values
 y_train = train_df.iloc[:, -1].values.ravel()
 X_test = test_df.iloc[:, :-1].values
 y_test = test_df.iloc[:, -1].values.ravel()
-
-# Scale features
-scaler = MinMaxScaler(feature_range=(0, 1))
-rescaledX_train = scaler.fit_transform(X_train)
-rescaledX_test = scaler.transform(X_test)  # Use transform only on test data
-
-print(rescaledX_train.shape)
-print(rescaledX_test.shape)
-
-# Example from actual notebook:
-X_train = cc_apps_train.iloc[:, :-1].values
-y_train = cc_apps_train.iloc[:, -1].values.ravel()
-X_test = cc_apps_test.iloc[:, :-1].values
-y_test = cc_apps_test.iloc[:, -1].values.ravel()
-
-scaler = MinMaxScaler(feature_range=(0, 1))
-rescaledX_train = scaler.fit_transform(X_train)
-rescaledX_test = scaler.transform(X_test)
-print(rescaledX_train.shape)
-print(rescaledX_test.shape)
 ```
 
----
-
-### **8. Logistic Regression**
+### MinMax scaling
 
 ```python
-# Create classifier
+scaler = MinMaxScaler(feature_range=(0, 1))
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+```
+
+### Logistic Regression
+
+```python
 logreg = LogisticRegression(max_iter=1000)
+logreg.fit(X_train_scaled, y_train)
+y_pred = logreg.predict(X_test_scaled)
 
-# Fit to training data
-logreg.fit(rescaledX_train, y_train)
-
-# Make predictions
-y_pred = logreg.predict(rescaledX_test)
-
-# Evaluate
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Accuracy: {accuracy}")
-
-cm = confusion_matrix(y_test, y_pred)
-print("Confusion Matrix:")
-print(cm)
-
-# Example from actual notebook:
-logreg = LogisticRegression(max_iter=1000)
-logreg.fit(rescaledX_train, y_train)
-
-y_pred = logreg.predict(rescaledX_test)
-
-print("Accuracy of logistic regression classifier: ", accuracy_score(y_test, y_pred))
+print(accuracy_score(y_test, y_pred))
 print(confusion_matrix(y_test, y_pred))
 ```
 
----
-
-### **9. K-Nearest Neighbors**
+### Baseline KNN
 
 ```python
-# With default k=5
-knn = KNeighborsClassifier()
-knn.fit(rescaledX_train, y_train)
-
-y_pred_knn = knn.predict(rescaledX_test)
-
-accuracy = knn.score(rescaledX_test, y_test)
-print(f"Accuracy (k=5): {accuracy}")
-
-print(confusion_matrix(y_test, y_pred_knn))
-
-# Example from actual notebook:
-knn = KNeighborsClassifier()
-knn.fit(rescaledX_train, y_train)
-
-y_pred_knn = knn.predict(rescaledX_test)
-
-print("Accuracy of KNN classifier (k=5): ", knn.score(rescaledX_test, y_test))
-print(confusion_matrix(y_test, y_pred_knn))
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train_scaled, y_train)
+y_pred_knn = knn.predict(X_test_scaled)
+print(accuracy_score(y_test, y_pred_knn))
 ```
 
----
-
-### **10. Finding Best k - Elbow Method**
+### Elbow search for best `k`
 
 ```python
 error_rates = []
-k_range = range(1, 41)
 
-for k in k_range:
+for k in range(1, 41):
     knn_temp = KNeighborsClassifier(n_neighbors=k)
-    knn_temp.fit(rescaledX_train, y_train)
-    y_pred_temp = knn_temp.predict(rescaledX_test)
+    knn_temp.fit(X_train_scaled, y_train)
+    y_pred_temp = knn_temp.predict(X_test_scaled)
     error_rates.append(np.mean(y_pred_temp != y_test))
 
-# Find best k
-best_k_elbow = k_range[np.argmin(error_rates)]
-min_error = min(error_rates)
-
-print(f"Best k (Elbow): {best_k_elbow}")
-print(f"Min error rate: {min_error:.4f}")
-
-# Train with best k
-knn_elbow = KNeighborsClassifier(n_neighbors=best_k_elbow)
-knn_elbow.fit(rescaledX_train, y_train)
-accuracy_elbow = knn_elbow.score(rescaledX_test, y_test)
-
-print(f"Accuracy with k={best_k_elbow}: {accuracy_elbow:.4f}")
-print(confusion_matrix(y_test, y_pred_elbow))
-
-# Example from actual notebook from notebook:
-error_rates = []
-k_range = range(1, 41)
-
-for k in k_range:
-    knn_temp = KNeighborsClassifier(n_neighbors=k)
-    knn_temp.fit(rescaledX_train, y_train)
-    y_pred_temp = knn_temp.predict(rescaledX_test)
-    error_rates.append(np.mean(y_pred_temp != y_test))
-
-best_k_elbow = k_range[np.argmin(error_rates)]
-
-print(f"Best k using Elbow Method: {best_k_elbow}")
-
-knn_elbow = KNeighborsClassifier(n_neighbors=best_k_elbow)
-knn_elbow.fit(rescaledX_train, y_train)
-y_pred_elbow = knn_elbow.predict(rescaledX_test)
-accuracy_elbow = knn_elbow.score(rescaledX_test, y_test)
-
-print(f"Accuracy with k={best_k_elbow} (Elbow Method): {accuracy_elbow:.4f}")
-
-print("\nConfusion Matrix with best k (Elbow Method):")
-print(confusion_matrix(y_test, y_pred_elbow))
+best_k = np.arange(1, 41)[np.argmin(error_rates)]
+print(best_k)
 ```
 
----
-
-### **11. Finding Best k - GridSearchCV**
+### GridSearchCV for `k`
 
 ```python
-# Create parameter grid
-param_grid = {'n_neighbors': range(1, 41)}
+param_grid = {"n_neighbors": range(1, 41)}
+grid = GridSearchCV(KNeighborsClassifier(), param_grid, cv=5, scoring="accuracy")
+grid.fit(X_train_scaled, y_train)
 
-# Initialize GridSearchCV
-knn_gscv = GridSearchCV(
-    KNeighborsClassifier(),
-    param_grid,
-    cv=5,
-    scoring='accuracy'
-)
-
-# Fit to find best parameters
-knn_gscv.fit(rescaledX_train, y_train)
-
-# Get best parameters
-best_k_cv = knn_gscv.best_params_['n_neighbors']
-best_score_cv = knn_gscv.best_score_
-
-print(f"Best k: {best_k_cv}")
-print(f"Best CV accuracy: {best_score_cv:.4f}")
-
-# Evaluate on test set
-best_knn = KNeighborsClassifier(n_neighbors=best_k_cv)
-best_knn.fit(rescaledX_train, y_train)
-test_accuracy = best_knn.score(rescaledX_test, y_test)
-
-print(f"Test accuracy: {test_accuracy:.4f}")
-y_pred_best = best_knn.predict(rescaledX_test)
-print(confusion_matrix(y_test, y_pred_best))
-
-# Example from actual notebook:
-knn_cv = KNeighborsClassifier()
-param_grid = {'n_neighbors': range(1, 41)}
-
-knn_gscv = GridSearchCV(knn_cv, param_grid, cv=5, scoring='accuracy')
-knn_gscv.fit(rescaledX_train, y_train)
-
-best_k_cv = knn_gscv.best_params_['n_neighbors']
-best_score_cv = knn_gscv.best_score_
-
-print(f"Best k using GridSearchCV: {best_k_cv}")
-print(f"Best cross-validation accuracy: {best_score_cv:.4f}")
-
-best_knn = KNeighborsClassifier(n_neighbors=best_k_cv)
-best_knn.fit(rescaledX_train, y_train)
-test_accuracy = best_knn.score(rescaledX_test, y_test)
-
-print(f"Test set accuracy with k={best_k_cv}: {test_accuracy:.4f}")
-
-y_pred_best_k = best_knn.predict(rescaledX_test)
-print("\nConfusion Matrix with best k:")
-print(confusion_matrix(y_test, y_pred_best_k))
+print(grid.best_params_)
+print(grid.best_score_)
 ```
 
----
-
-### **12. Hyperparameter Tuning - Multiple Parameters**
+### GridSearchCV with multiple hyperparameters
 
 ```python
-# Parameter grid with multiple parameters
 param_grid = {
-    'n_neighbors': np.arange(1, 11),
-    'weights': ['uniform', 'distance'],
-    'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
-    'p': [1, 2]  # 1=Manhattan, 2=Euclidean
+    "n_neighbors": np.arange(1, 11),
+    "weights": ["uniform", "distance"],
+    "algorithm": ["auto", "ball_tree", "kd_tree", "brute"],
+    "p": [1, 2],
 }
 
-# Grid search
-grid = GridSearchCV(
-    KNeighborsClassifier(),
-    param_grid,
-    cv=5,
-    scoring='accuracy'
-)
+grid = GridSearchCV(KNeighborsClassifier(), param_grid, cv=5, scoring="accuracy")
+grid.fit(X_train_scaled, y_train)
 
-# Fit
-grid.fit(rescaledX_train, y_train)
-
-print("Best Parameters:", grid.best_params_)
-print("Best Accuracy:", grid.best_score_)
-
-# Example from actual notebook:
-param_grid = {
-    'n_neighbors': np.arange(1, 11),
-    'weights': ['uniform', 'distance'],
-    'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
-    'p': [1, 2]
-}
-
-knn = KNeighborsClassifier()
-grid = GridSearchCV(knn, param_grid, cv=5, scoring='accuracy')
-grid.fit(rescaledX_train, y_train)
-
-print("Best Hyperparameters:", grid.best_params_)
-print("Best Accuracy:", grid.best_score_)
+print(grid.best_params_)
+print(grid.best_score_)
 ```
 
----
+### Lecture 11 reminders
 
-## **LECTURE 12: K-MEANS CLUSTERING**
+- The safe pattern is `split -> impute -> encode -> align columns -> scale -> fit`.
+- Fit scalers on training data only.
+- `reindex(columns=train_df.columns, fill_value=0)` is critical after `pd.get_dummies`.
+- Use Logistic Regression and KNN as complementary baselines.
 
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import make_pipeline
-import os
-import warnings
+## Lecture 12: K-Means clustering
 
-# Suppress KMeans warnings
-os.environ['OMP_NUM_THREADS'] = '1'
-warnings.filterwarnings('ignore', message='KMeans is known to have a memory leak')
-```
-
----
-
-### **Basic K-Means Clustering**
+### Basic K-Means on iris-like samples
 
 ```python
-# Load iris dataset as example
 from sklearn.datasets import load_iris
-iris = load_iris()
 
-# Create KMeans model with 3 clusters
-model = KMeans(n_clusters=3, n_init='auto')
+iris = load_iris()
+model = KMeans(n_clusters=3, n_init="auto")
 model.fit(iris.data)
 
-# Get cluster labels
 labels = model.predict(iris.data)
 print(labels)
-
-# Predict new samples
-new_samples = np.array([[5.7, 4.4, 1.5, 0.4],
-                       [6.5, 3.0, 5.5, 1.8],
-                       [5.8, 2.7, 5.1, 1.9]])
-new_labels = model.predict(new_samples)
-print(new_labels)
 ```
 
-### **Visualizing Clusters**
+### Predict clusters for new points
 
 ```python
-# Scatter plot with cluster colors
-xs = iris.data[:, 0]  # sepal length
-ys = iris.data[:, 2]  # petal length
-plt.scatter(xs, ys, c=labels)
-plt.xlabel('Sepal Length')
-plt.ylabel('Petal Length')
-plt.show()
+new_samples = np.array([
+    [5.7, 4.4, 1.5, 0.4],
+    [6.5, 3.0, 5.5, 1.8],
+    [5.8, 2.7, 5.1, 1.9],
+])
 
-# With centroids (cluster centers)
+print(model.predict(new_samples))
+```
+
+### Visualize clusters
+
+```python
+xs = iris.data[:, 0]
+ys = iris.data[:, 2]
+
+plt.scatter(xs, ys, c=labels, alpha=0.6)
+plt.xlabel("Sepal length")
+plt.ylabel("Petal length")
+plt.show()
+```
+
+### Plot centroids
+
+```python
 centroids = model.cluster_centers_
-centroids_x = centroids[:, 0]
-centroids_y = centroids[:, 2]
-plt.scatter(xs, ys, c=labels, alpha=0.5)
-plt.scatter(centroids_x, centroids_y, marker='D', s=50)  # centroids as diamonds
+plt.scatter(xs, ys, c=labels, alpha=0.6)
+plt.scatter(centroids[:, 0], centroids[:, 2], marker="D", s=60)
 plt.show()
 ```
 
-### **Finding Optimal k (Elbow Method)**
+### Elbow method
 
 ```python
-# Load data
-pointsDF = pd.read_csv('points.csv', index_col=0)
-points = pointsDF.to_numpy()
-
-# Test k values from 1 to 9
 ks = range(1, 10)
 inertias = []
 
 for k in ks:
-    model = KMeans(n_clusters=k, n_init='auto')
-    model.fit(points)
-    inertias.append(model.inertia_)
+    temp_model = KMeans(n_clusters=k, n_init="auto")
+    temp_model.fit(samples)
+    inertias.append(temp_model.inertia_)
 
-# Plot elbow curve
-plt.plot(ks, inertias, '-o')
-plt.xlabel('Number of clusters, k')
-plt.ylabel('Inertia')
-plt.xticks(ks)
+plt.plot(list(ks), inertias, marker="o")
+plt.xlabel("Number of clusters (k)")
+plt.ylabel("Inertia")
+plt.xticks(list(ks))
 plt.show()
-
-# Choose k where inertia drop levels off (the "elbow")
 ```
 
-### **Cross-Tabulation (Compare Clusters with True Labels)**
+### Seeds example with crosstab
 
 ```python
-# Create DataFrame with clusters and true labels
-df = pd.DataFrame({'labels': labels, 'varieties': varieties})
-
-# Create crosstab
-ct = pd.crosstab(df['labels'], df['varieties'])
+labels = model.fit_predict(seeds)
+df = pd.DataFrame({"labels": labels, "varieties": true_varieties})
+ct = pd.crosstab(df["labels"], df["varieties"])
 print(ct)
-
-# Example output:
-# varieties  Canadian wheat  Kama wheat  Rosa wheat
-# labels
-# 0                       0          63          10
-# 1                      69           5           1
-# 2                       0           2          59
 ```
 
-### **Standardization with Pipeline**
+### Standardization with pipeline
 
 ```python
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler
-
-# Load data
-fish = pd.read_csv('fish.csv', header=None)
-samples = fish.drop(0, axis=1)  # Drop species column
-
-# Create scaler and KMeans
 scaler = StandardScaler()
-kmeans = KMeans(n_clusters=4, n_init='auto')
-
-# Create pipeline
+kmeans = KMeans(n_clusters=3, n_init="auto")
 pipeline = make_pipeline(scaler, kmeans)
 pipeline.fit(samples)
 
-# Get labels
 labels = pipeline.predict(samples)
-
-# Create crosstab to evaluate
-species = fish[0].tolist()
-df = pd.DataFrame({'labels': labels, 'species': species})
-ct = pd.crosstab(df['labels'], df['species'])
-print(ct)
-
-# Access cluster centers (scaled)
-centers = pipeline.named_steps['kmeans'].cluster_centers_
-print("\nCluster centers (scaled):")
-print(centers)
+centers = pipeline.named_steps["kmeans"].cluster_centers_
 ```
 
-### **Complete Clustering Workflow**
+### Practical workflow for repo datasets
 
 ```python
-# 1. Load data
-seedsDF = pd.read_csv('seeds.csv')
-seeds = seedsDF.to_numpy()
-
-# 2. Find optimal k using elbow method
-ks = range(1, 10)
-inertias = []
-for k in ks:
-    model = KMeans(n_clusters=k, n_init='auto')
-    model.fit(seeds)
-    inertias.append(model.inertia_)
-
-plt.plot(ks, inertias, '-o')
-plt.xlabel('Number of clusters, k')
-plt.ylabel('Inertia')
-plt.xticks(ks)
-plt.show()
-
-# 3. Fit final model with chosen k
-model = KMeans(n_clusters=3, n_init='auto')
-labels = model.fit_predict(seeds)
-
-# 4. Visualize clusters
-xs = seeds[:, 0]  # area
-ys = seeds[:, 2]  # compactness
-plt.scatter(xs, ys, c=labels, alpha=0.5)
-
-# Add centroids
-centroids = model.cluster_centers_
-plt.scatter(centroids[:, 0], centroids[:, 2], marker='D', s=50)
-plt.xlabel('Area')
-plt.ylabel('Compactness')
-plt.show()
-
-# 5. Evaluate with crosstab (if true labels available)
-df = pd.DataFrame({'labels': labels, 'species': species_list})
-ct = pd.crosstab(df['labels'], df['species'])
-print(ct)
-```
-
-### **Key K-Means Concepts**
-
-- **n_clusters**: Number of clusters to create
-- **n_init='auto'**: Number of times algorithm runs with different centroids
-- **labels_**: Cluster labels for each point (after fit)
-- **cluster_centers_**: Coordinates of cluster centers
-- **inertia_**: Sum of squared distances to closest cluster center
-- **predict()**: Assign new samples to existing clusters
-- **fit_predict()**: Fit model and return labels in one step
-
-### **Important Notes**
-
-1. **Standardization**: Always scale features before clustering when variables have different units/scales
-2. **Choosing k**: Use the elbow method - look for where inertia decrease levels off
-3. **Evaluation**: Use crosstab with true labels to assess clustering quality
-4. **Reproducibility**: K-Means uses random initialization; set `random_state` for consistent results
-
----
-
-## **METRICS & EVALUATION**
-
-### **Confusion Matrix**
-```
-                Predicted
-                Positive  Negative
-Actual Positive    TP        FN
-       Negative    FP        TN
-
-TP: True Positive
-TN: True Negative
-FP: False Positive (Type I error)
-FN: False Negative (Type II error)
+points = pd.read_csv("points.csv")
+new_points = pd.read_csv("new_points.csv")
+seeds = pd.read_csv("seeds.csv")
+wine = pd.read_csv("wine.data", header=None)
+fish = pd.read_csv("fish.csv")
 ```
 
 ```python
-from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
+model = KMeans(n_clusters=3, n_init="auto")
+labels = model.fit_predict(points)
+new_labels = model.predict(new_points)
+```
 
-# Confusion matrix
+### Lecture 12 reminders
+
+- Standardize features before clustering when scales differ.
+- `model.inertia_` gets smaller as `k` increases, so look for the elbow instead of the minimum.
+- `pd.crosstab()` is useful only when you have known labels to compare against.
+- Use `predict()` for new points after fitting the model.
+
+## Cross-Lecture Evaluation Patterns
+
+### Accuracy
+
+```python
+accuracy_score(y_test, y_pred)
+model.score(X_test, y_test)
+```
+
+### Confusion matrix
+
+```python
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
-
-# Metrics
-accuracy = accuracy_score(y_test, y_pred)
-precision = precision_score(y_test, y_pred)
-recall = recall_score(y_test, y_pred)
-f1 = f1_score(y_test, y_pred)
-
-print(f"Accuracy: {accuracy:.4f}")
-print(f"Precision: {precision:.4f}")
-print(f"Recall: {recall:.4f}")
-print(f"F1-Score: {f1:.4f}")
 ```
 
-### **Classification Report**
-```python
-from sklearn.metrics import classification_report
+### Classification report
 
+```python
 print(classification_report(y_test, y_pred))
 ```
 
----
+### RMSE
 
-## **COMMON DATA CLEANING PATTERNS**
-
-### **1. Dropping Rows with Specific Values**
 ```python
-# Drop rows where column equals 0
-df = df[df['column'] != 0]
-
-# Drop rows with missing values in specific columns
-df = df.dropna(subset=['col1', 'col2'])
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+print(rmse)
 ```
 
-### **2. Converting Categories to Binary**
-```python
-# Convert categorical to binary (0/1)
-df['binary_col'] = np.where(df['category'] == 'DesiredValue', 1, 0)
+### Crosstab for clustering
 
-# Example from actual notebook:
-music_df['genre'] = np.where(music_df['genre'] == 'Rock', 1, 0)
+```python
+pd.crosstab(df["labels"], df["true_class"])
 ```
 
-### **3. Checking Data Correlations**
+## Repo-Specific Final Exam Patterns
+
+The current `final_files/` folder adds two useful review workflows on top of Lectures 7-12:
+
+### Final Q1 pattern
+
 ```python
-# Correlation matrix (only numeric)
-print(df.corr(numeric_only=True))
-
-# Single correlation
-print(df['col1'].corr(df['col2']))
-
-# Example from actual notebook:
-print(cc_apps.corr(numeric_only=True))
+train_1 = pd.read_csv("train_1.csv", index_col=0)
+train_2 = pd.read_csv("train_2.csv", index_col=0)
+train = pd.concat([train_1, train_2], ignore_index=True)
 ```
 
----
+Typical tasks in the repo notebook:
 
-## **QUICK REFERENCE FOR EXAMS**
+- inspect dtypes and null counts
+- fill categorical columns with mode
+- fill selected numeric columns with mode or median-like fixes
+- label-encode loan-style categorical fields
+- inspect correlation with a heatmap
+- fit a simple OLS regression such as `LoanAmount ~ ApplicantIncome`
 
-| Task | Library/Function |
-|------|----------------|
-| Mean/Median | `.mean()`, `.median()` |
-| Quantiles | `np.quantile()`, `.quantile()` |
-| Standard Deviation | `.std()`, `.var()` |
-| Histogram | `.hist()`, `sns.histplot()` |
-| Correlation | `.corr()` |
-| Regression | `ols()` from statsmodels |
-| KNN | `KNeighborsClassifier()` |
-| Train/Test Split | `train_test_split()` |
-| Cross-Validation | `cross_val_score()`, `KFold()` |
-| Missing Values | `SimpleImputer()` |
-| Encoding | `LabelEncoder()`, `pd.get_dummies()` |
-| Scaling | `MinMaxScaler()`, `StandardScaler()` |
-| Grid Search | `GridSearchCV()` |
-| Logistic Regression | `LogisticRegression()` |
-| Confusion Matrix | `confusion_matrix()` |
-| Classification Report | `classification_report()` |
-| K-Means Clustering | `KMeans()` |
-| Crosstab | `pd.crosstab()` |
-| Cluster Centers | `model.cluster_centers_` |
-| Inertia | `model.inertia_` |
+### Final Q2 pattern
 
----
+```python
+telecom_churn = pd.read_csv("telecom_churn.csv", index_col=0)
 
-**Remember:**
-- Set random seeds for reproducibility: `np.random.seed()`, `random_state=`
-- Always fit on training data, transform both train and test
-- **Split BEFORE preprocessing to avoid data leakage** (critical for Lecture 11)
-- Use `stratify=y` in train_test_split for classification
-- Fit scalers on training data only, not on test data
-- Use fit_transform on training data, transform only on test data
-- For GridSearchCV, ensure you fit on training data and evaluate on test data separately
-- **For K-Means**: Always standardize features before clustering when variables have different scales (Lecture 12)
+X = telecom_churn[
+    ["total_day_charge", "total_eve_charge", "total_night_charge", "customer_service_calls"]
+]
+y = telecom_churn["churn"]
+```
+
+Typical tasks in the repo notebook:
+
+- compare multiple `test_size` values
+- search for the best `k`
+- fit the final KNN model with the chosen `k`
+- predict churn on `new_data.csv`
+
+## Critical Reminders
+
+1. Use `random_state=` when a question needs reproducibility.
+2. Use `stratify=y` for classification splits.
+3. Split before preprocessing to avoid data leakage.
+4. Fit scalers and imputers on training data only.
+5. Align test columns with train columns after one-hot encoding.
+6. Use `ols()` for lecture-style regression work.
+7. Use accuracy and confusion matrices for classification tasks.
+8. Standardize before K-Means if feature scales differ.
+9. Use elbow plots to choose `k` in both KNN and K-Means style questions.
+10. Keep plots labeled and readable because many notebook questions rely on interpretation.
+
+## Fast Exam Checklist
+
+- Read the dataset and inspect nulls first.
+- Decide whether the task is stats, regression, classification, preprocessing, or clustering.
+- Pick the matching lecture workflow from this cheatsheet.
+- Write the cleanest version of the pipeline first, then print the key metric or plot.
+- If the question asks for interpretation, explain the metric or chart in plain language after the code.
